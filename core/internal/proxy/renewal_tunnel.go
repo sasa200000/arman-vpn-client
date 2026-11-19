@@ -5,7 +5,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
 )
 
 func (c *Controller) withRenewalTunnel(ctx context.Context) (context.Context, func()) {

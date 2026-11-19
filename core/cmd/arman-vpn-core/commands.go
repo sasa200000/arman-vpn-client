@@ -12,13 +12,13 @@ import (
 
 	"golang.org/x/term"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/accounts"
-	"github.com/armanlife/arman-vpn-client/core/internal/config"
-	"github.com/armanlife/arman-vpn-client/core/internal/fxa"
-	"github.com/armanlife/arman-vpn-client/core/internal/guardian"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/proxy"
-	"github.com/armanlife/arman-vpn-client/core/internal/service"
+	"github.com/sasa200000/v2rvpn-client/core/internal/accounts"
+	"github.com/sasa200000/v2rvpn-client/core/internal/config"
+	"github.com/sasa200000/v2rvpn-client/core/internal/fxa"
+	"github.com/sasa200000/v2rvpn-client/core/internal/guardian"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/proxy"
+	"github.com/sasa200000/v2rvpn-client/core/internal/service"
 )
 
 // runAddAccount signs in interactively and stores the account at the end
@@ -311,7 +311,7 @@ func interactiveSignIn() (*fxa.TokenResponse, string, string) {
 
 // accountTransferGuide explains signing in with the app's browser page
 // and moving the account to a device without one.
-const accountTransferGuide = "https://github.com/armanlife/arman-vpn-client/blob/main/docs/BROWSER-SIGNIN.md"
+const accountTransferGuide = "https://github.com/sasa200000/v2rvpn-client/blob/main/docs/BROWSER-SIGNIN.md"
 
 // printBlockedHint suggests the app's browser sign-in when Fastly's bot
 // check keeps refusing the terminal one.

@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/signinproxy"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/signinproxy"
 )
 
 // signInProxy holds the browser sign-in's proxy (package signinproxy):

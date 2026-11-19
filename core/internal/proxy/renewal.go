@@ -9,11 +9,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/accounts"
-	"github.com/armanlife/arman-vpn-client/core/internal/fxa"
-	"github.com/armanlife/arman-vpn-client/core/internal/guardian"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/netstate"
+	"github.com/sasa200000/v2rvpn-client/core/internal/accounts"
+	"github.com/sasa200000/v2rvpn-client/core/internal/fxa"
+	"github.com/sasa200000/v2rvpn-client/core/internal/guardian"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/netstate"
 )
 
 const (

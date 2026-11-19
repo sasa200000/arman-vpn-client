@@ -16,7 +16,7 @@ import (
 	"net"
 	"sync/atomic"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
 )
 
 // The network.hello_split choices. SNI cuts the name after its first

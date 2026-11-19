@@ -8,10 +8,10 @@ import (
 	"time"
 	"unicode/utf16"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/config"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/service"
-	"github.com/armanlife/arman-vpn-client/core/internal/version"
+	"github.com/sasa200000/v2rvpn-client/core/internal/config"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/service"
+	"github.com/sasa200000/v2rvpn-client/core/internal/version"
 
 	"fyne.io/systray"
 )

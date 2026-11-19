@@ -44,9 +44,9 @@ AppName={#AppName}
 AppVersion={#AppVersion}
 AppVerName={#AppName} {#AppVersion}
 AppPublisher=V2RVPN
-AppPublisherURL=https://github.com/armanlife/arman-vpn-client
-AppSupportURL=https://github.com/armanlife/arman-vpn-client/issues
-AppUpdatesURL=https://github.com/armanlife/arman-vpn-client/releases
+AppPublisherURL=https://github.com/sasa200000/v2rvpn-client
+AppSupportURL=https://github.com/sasa200000/v2rvpn-client/issues
+AppUpdatesURL=https://github.com/sasa200000/v2rvpn-client/releases
 VersionInfoVersion={#AppVersion}
 DefaultDirName={code:DefaultDir}
 ; The folder is asked on the first install only; an update goes where the

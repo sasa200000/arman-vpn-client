@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
 )
 
 // The service of the versions before 1.0.9, when the program was called

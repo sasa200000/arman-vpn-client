@@ -61,9 +61,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/signing"
-	"github.com/armanlife/arman-vpn-client/core/internal/version"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/signing"
+	"github.com/sasa200000/v2rvpn-client/core/internal/version"
 )
 
 // The states of Status.
@@ -115,7 +115,7 @@ func AppDir(exe string) string {
 
 // releasesURL is where GitHub serves a release's files:
 // <releasesURL>v<version>/<file>.
-const releasesURL = "https://github.com/armanlife/arman-vpn-client/releases/download/"
+const releasesURL = "https://github.com/sasa200000/v2rvpn-client/releases/download/"
 
 // ServerEnv names a release server to use instead of GitHub, for trying
 // updates with a local test release: it serves

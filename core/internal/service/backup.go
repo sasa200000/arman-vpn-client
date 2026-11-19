@@ -16,9 +16,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/accounts"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/version"
+	"github.com/sasa200000/v2rvpn-client/core/internal/accounts"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/version"
 )
 
 // A backup is the data folder as a zip file, in the same layout, so that it

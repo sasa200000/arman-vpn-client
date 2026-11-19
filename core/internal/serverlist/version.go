@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
 )
 
 // productDetailsURL lists Mozilla's current Firefox versions.

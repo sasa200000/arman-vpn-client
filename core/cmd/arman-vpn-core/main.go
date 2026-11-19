@@ -13,11 +13,11 @@ import (
 
 	"golang.org/x/term"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/desktop"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/service"
-	"github.com/armanlife/arman-vpn-client/core/internal/update"
-	"github.com/armanlife/arman-vpn-client/core/internal/version"
+	"github.com/sasa200000/v2rvpn-client/core/internal/desktop"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/service"
+	"github.com/sasa200000/v2rvpn-client/core/internal/update"
+	"github.com/sasa200000/v2rvpn-client/core/internal/version"
 )
 
 func main() {

@@ -6,7 +6,7 @@ body:
     id: search-first
     attributes:
       label: Search first
-      description: Please [search existing issues](https://github.com/armanlife/arman-vpn-client/issues?q=is%3Aissue) before reporting.
+      description: Please [search existing issues](https://github.com/sasa200000/v2rvpn-client/issues?q=is%3Aissue) before reporting.
       options:
         - label: I searched and no similar issues were found
           required: true

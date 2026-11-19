@@ -38,7 +38,7 @@ The root [README.md](../README.md) is the user entry point.
 
 ## Fast orientation
 
-- Module: `github.com/armanlife/arman-vpn-client/core`; executable: `./cmd/arman-vpn-core` (service, dashboard, proxy); internal packages: `fxa`, `guardian`, `serverlist`, `accounts`, `config`, `controlplane`, `securefile`, `resolver`.
+- Module: `github.com/sasa200000/v2rvpn-client/core`; executable: `./cmd/arman-vpn-core` (service, dashboard, proxy); internal packages: `fxa`, `guardian`, `serverlist`, `accounts`, `config`, `controlplane`, `securefile`, `resolver`.
 - Data: SOCKS5 CONNECT -> controller/pool -> H2 over TLS/TCP or H3 over QUIC/UDP -> Fastly -> target TCP. SOCKS5 UDP ASSOCIATE -> CONNECT-UDP on an HTTP/2 connection of its own -> Fastly -> target UDP.
 - Control: per-account FxA OAuth -> Guardian ProxyPass -> bearer token for CONNECT; the account manager picks the account.
 - Settings and accounts: `user-data/` next to the executable (the desktop app's data folder when the core sits beside `arman-vpn.exe`), edited through the dashboard (`127.0.0.1:10820`).

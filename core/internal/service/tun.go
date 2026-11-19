@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/config"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/config"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
 )
 
 // The desktop TUN mode (system_proxy.mode "tun"): the TUN service

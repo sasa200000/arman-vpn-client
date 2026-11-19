@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/proxy"
+	"github.com/sasa200000/v2rvpn-client/core/internal/proxy"
 )
 
 // Without a running proxy a measurement needs an account for its pass.

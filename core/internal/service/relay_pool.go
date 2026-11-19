@@ -13,7 +13,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/evasion"
+	"github.com/sasa200000/v2rvpn-client/core/internal/evasion"
 )
 
 // Relay kinds. A kind says how to talk to an endpoint, not who runs it.

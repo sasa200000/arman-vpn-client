@@ -18,9 +18,9 @@ import (
 	"golang.org/x/sys/windows/svc"
 	"golang.org/x/sys/windows/svc/mgr"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/tunapi"
-	"github.com/armanlife/arman-vpn-client/core/internal/version"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tunapi"
+	"github.com/sasa200000/v2rvpn-client/core/internal/version"
 )
 
 // The installed service lives in Program Files, where only administrators

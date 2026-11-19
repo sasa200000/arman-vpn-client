@@ -27,7 +27,7 @@ import (
 	"github.com/sagernet/sing/common/control"
 	"golang.org/x/net/dns/dnsmessage"
 
-	faketun "github.com/armanlife/arman-vpn-client/core/internal/tun"
+	faketun "github.com/sasa200000/v2rvpn-client/core/internal/tun"
 )
 
 // The tests put a second TCP/IP stack, standing in for the computer and its

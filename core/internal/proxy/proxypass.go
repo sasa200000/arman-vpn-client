@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/fxa"
-	"github.com/armanlife/arman-vpn-client/core/internal/guardian"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/fxa"
+	"github.com/sasa200000/v2rvpn-client/core/internal/guardian"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
 )
 
 const (

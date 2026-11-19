@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/routing"
-	"github.com/armanlife/arman-vpn-client/core/internal/securefile"
+	"github.com/sasa200000/v2rvpn-client/core/internal/routing"
+	"github.com/sasa200000/v2rvpn-client/core/internal/securefile"
 )
 
 // writeTestGeoIP writes a geoip.dat with the given tags and networks into

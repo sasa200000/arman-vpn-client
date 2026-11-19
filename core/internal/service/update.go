@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
-	"github.com/armanlife/arman-vpn-client/core/internal/update"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/update"
 )
 
 // The desktop app's updates (internal/update): the app finds a newer

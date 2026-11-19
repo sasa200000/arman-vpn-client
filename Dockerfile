@@ -47,7 +47,7 @@ RUN set -eu \
        fi \
     && export CGO_ENABLED=0 GOOS="${TARGETOS:-linux}" GOARCH="$goarch" \
     && if [ -n "$goarm" ]; then export GOARM="$goarm"; fi \
-    && flags="-s -w -X github.com/armanlife/arman-vpn-client/core/internal/version.Current=${version}" \
+    && flags="-s -w -X github.com/sasa200000/v2rvpn-client/core/internal/version.Current=${version}" \
     && go build -trimpath -ldflags "$flags" -o /out/arman-vpn-core ./cmd/arman-vpn-core
 
 FROM scratch AS prebuilt
@@ -59,7 +59,7 @@ FROM ${CORE} AS core
 FROM debian:bookworm-slim
 
 ARG VERSION=0.0.0
-ARG SOURCE=https://github.com/armanlife/arman-vpn-client
+ARG SOURCE=https://github.com/sasa200000/v2rvpn-client
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates tzdata \

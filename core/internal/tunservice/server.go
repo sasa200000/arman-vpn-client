@@ -14,10 +14,10 @@ import (
 	"net/netip"
 	"sync"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/tun"
-	"github.com/armanlife/arman-vpn-client/core/internal/tunapi"
-	"github.com/armanlife/arman-vpn-client/core/internal/tunstack"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tun"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tunapi"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tunstack"
 )
 
 // adapterMTU is the TUN adapter's MTU; AdapterName (adapter_*.go) its name.

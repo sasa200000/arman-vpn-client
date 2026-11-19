@@ -11,9 +11,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/netstate"
-	"github.com/armanlife/arman-vpn-client/core/internal/securefile"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/netstate"
+	"github.com/sasa200000/v2rvpn-client/core/internal/securefile"
 )
 
 const tokenRouteTTL = 30 * time.Minute

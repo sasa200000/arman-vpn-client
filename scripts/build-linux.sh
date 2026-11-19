@@ -31,7 +31,7 @@ case "$(uname -m)" in
   aarch64 | arm64) flutter_arch=arm64 arch=arm64 ;;
   *) echo "no Flutter build for $(uname -m)" >&2; exit 1 ;;
 esac
-module=github.com/armanlife/arman-vpn-client/core
+module=github.com/sasa200000/v2rvpn-client/core
 
 public=""
 if [ -n "${ARMAN_VPN_SIGNING_KEY:-}${ARMAN_VPN_SIGNING_KEY_FILE:-}" ]; then

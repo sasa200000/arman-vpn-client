@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/securefile"
+	"github.com/sasa200000/v2rvpn-client/core/internal/securefile"
 )
 
 // localTokenHeader carries the local API token. Local clients that can read

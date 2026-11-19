@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/signing"
+	"github.com/sasa200000/v2rvpn-client/core/internal/signing"
 )
 
 // The tests make the Windows zip on every system; untar_test.go tries the

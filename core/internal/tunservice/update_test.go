@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/signing"
+	"github.com/sasa200000/v2rvpn-client/core/internal/signing"
 )
 
 // signedFile writes an executable and its signature by priv.

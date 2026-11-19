@@ -12,8 +12,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
 )
 
 // exchangeSessionWithOAuthCode uses FxA's session-authenticated code grant

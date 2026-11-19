@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/service"
+	"github.com/sasa200000/v2rvpn-client/core/internal/service"
 )
 
 // Code shared by the desktop processes that host the service in-process:

@@ -14,7 +14,7 @@ const appVersion = String.fromEnvironment('APP_VERSION', defaultValue: '0.0.0');
 
 /// The GitHub repository, "owner/name", for the source link and the update
 /// check.
-const githubRepo = 'sasa200000/v2rvpn';
+const githubRepo = 'sasa200000/v2rvpn-client';
 
 /// The update manifest and its mirror. A build may name others
 /// (--dart-define=UPDATE_MANIFEST_URL=..., UPDATE_MANIFEST_MIRROR=...) to
@@ -22,12 +22,11 @@ const githubRepo = 'sasa200000/v2rvpn';
 /// the one every installed app reads.
 const updateManifestUrl = String.fromEnvironment(
   'UPDATE_MANIFEST_URL',
-  defaultValue: 'https://raw.githubusercontent.com/sasa200000/v2rvpn/main/.github/updates.json',
+  defaultValue: 'https://raw.githubusercontent.com/sasa200000/v2rvpn-client/main/.github/updates.json',
 );
 const updateManifestMirror = String.fromEnvironment(
   'UPDATE_MANIFEST_MIRROR',
-  defaultValue:
-      'https://cdn.jsdelivr.net/gh/sasa200000/v2rvpn@main/.github/updates.json',
+  defaultValue: 'https://cdn.jsdelivr.net/gh/sasa200000/v2rvpn-client@main/.github/updates.json',
 );
 
 /// A release server used instead of GitHub, to try updates with a local

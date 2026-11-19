@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/config"
-	"github.com/armanlife/arman-vpn-client/core/internal/proxy"
-	"github.com/armanlife/arman-vpn-client/core/internal/serverlist"
+	"github.com/sasa200000/v2rvpn-client/core/internal/config"
+	"github.com/sasa200000/v2rvpn-client/core/internal/proxy"
+	"github.com/sasa200000/v2rvpn-client/core/internal/serverlist"
 )
 
 // Client calls a running service's dashboard API with the local token

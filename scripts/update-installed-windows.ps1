@@ -55,8 +55,8 @@ try {
     $env:APP_VERSION = $version
     go generate ./cmd/arman-vpn-core
     if ($LASTEXITCODE -ne 0) { throw 'go generate failed' }
-    $ldflags = "-s -w -X github.com/armanlife/arman-vpn-client/core/internal/version.Current=$version"
-    if ($public) { $ldflags += " -X github.com/armanlife/arman-vpn-client/core/internal/signing.Key=$public" }
+    $ldflags = "-s -w -X github.com/sasa200000/v2rvpn-client/core/internal/version.Current=$version"
+    if ($public) { $ldflags += " -X github.com/sasa200000/v2rvpn-client/core/internal/signing.Key=$public" }
     # Optional local build settings (scripts\build-local.ps1), the same seam
     # scripts\build-windows.ps1 uses, so the copy put over an installed one
     # is the same build as a release and not a plainer one. Without that file

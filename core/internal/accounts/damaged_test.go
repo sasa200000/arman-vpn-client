@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/fxa"
+	"github.com/sasa200000/v2rvpn-client/core/internal/fxa"
 )
 
 // A folder under accounts/ that holds no readable account (a copy made by

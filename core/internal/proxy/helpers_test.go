@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
-	"github.com/armanlife/arman-vpn-client/core/internal/serverlist"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/serverlist"
 )
 
 type delayedTunnelOpener struct {

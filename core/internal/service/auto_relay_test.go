@@ -19,10 +19,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/config"
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
-	"github.com/armanlife/arman-vpn-client/core/internal/evasion"
-	"github.com/armanlife/arman-vpn-client/core/internal/guardian"
+	"github.com/sasa200000/v2rvpn-client/core/internal/config"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/evasion"
+	"github.com/sasa200000/v2rvpn-client/core/internal/guardian"
 )
 
 func TestAutomaticRelayKeepsCustomControlPlaneIsolated(t *testing.T) {

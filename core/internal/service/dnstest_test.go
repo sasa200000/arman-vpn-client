@@ -12,7 +12,7 @@ import (
 
 	"golang.org/x/net/dns/dnsmessage"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/resolver"
+	"github.com/sasa200000/v2rvpn-client/core/internal/resolver"
 )
 
 // startTestDNS answers every A query with ip.

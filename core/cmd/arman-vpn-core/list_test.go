@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/accounts"
+	"github.com/sasa200000/v2rvpn-client/core/internal/accounts"
 )
 
 func TestAccountList(t *testing.T) {

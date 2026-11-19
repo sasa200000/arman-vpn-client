@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
 )
 
 func TestLogErrRedactsConnectHTTPBodyUnlessVerbose(t *testing.T) {

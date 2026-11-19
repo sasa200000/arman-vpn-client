@@ -1,4 +1,4 @@
-module github.com/armanlife/arman-vpn-client/core
+module github.com/sasa200000/v2rvpn-client/core
 
 go 1.27.2
 

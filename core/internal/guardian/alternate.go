@@ -11,10 +11,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/controlplane"
-	"github.com/armanlife/arman-vpn-client/core/internal/evasion"
-	"github.com/armanlife/arman-vpn-client/core/internal/hellosplit"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/controlplane"
+	"github.com/sasa200000/v2rvpn-client/core/internal/evasion"
+	"github.com/sasa200000/v2rvpn-client/core/internal/hellosplit"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
 )
 
 // TokenRequestTimeout leaves time for the local attempts and relay recovery.

@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/fxa"
+	"github.com/sasa200000/v2rvpn-client/core/internal/fxa"
 )
 
 // All credentials in this file are local fixtures.

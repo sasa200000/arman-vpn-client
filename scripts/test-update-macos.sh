@@ -23,7 +23,7 @@ set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 version="$(sed -n 's/^version:[[:space:]]*\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' "$root/app/pubspec.yaml")"
 next="${version%.*}.$((${version##*.} + 1))"
-module=github.com/armanlife/arman-vpn-client/core
+module=github.com/sasa200000/v2rvpn-client/core
 # The last version under the old name, and its names.
 old_version=1.0.8
 old_module=github.com/armanlife/firefox-vpn-client/core
@@ -93,7 +93,7 @@ done
 # sealed again as the build seals it.
 mkdir -p "$work/old"
 curl -fsSL --retry 3 -o "$work/old.tar.gz" \
-  "https://github.com/armanlife/arman-vpn-client/releases/download/v$old_version/Firefox-VPN-$old_version-macOS.tar.gz"
+  "https://github.com/sasa200000/v2rvpn-client/releases/download/v$old_version/Firefox-VPN-$old_version-macOS.tar.gz"
 tar -xzf "$work/old.tar.gz" -C "$work/old"
 cp "$work/core-$old_version" "$work/old/Firefox VPN.app/Contents/MacOS/firefox-vpn-core"
 codesign --force --sign - "$work/old/Firefox VPN.app/Contents/MacOS/firefox-vpn-core"

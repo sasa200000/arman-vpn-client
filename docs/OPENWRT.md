@@ -35,7 +35,7 @@ case "$(uname -m)" in
   x86_64) arch=amd64 ;;
   armv7*) arch=armv7 ;;
 esac
-wget -O core.tar.gz "https://github.com/armanlife/arman-vpn-client/releases/latest/download/arman-vpn-core-linux-$arch.tar.gz"
+wget -O core.tar.gz "https://github.com/sasa200000/v2rvpn-client/releases/latest/download/arman-vpn-core-linux-$arch.tar.gz"
 tar -xzf core.tar.gz && mv "arman-vpn-core-linux-$arch/arman-vpn-core" . && rm -r core.tar.gz "arman-vpn-core-linux-$arch"
 chmod +x arman-vpn-core
 ```
@@ -47,7 +47,7 @@ chmod +x arman-vpn-core
 
 1. On the router, check the processor: `grep DISTRIB_ARCH /etc/openwrt_release`
    `x86_64` → **amd64** · `aarch64_…` → **arm64** · `arm_cortex-a…` → **armv7**
-2. Download [arm64](https://github.com/armanlife/arman-vpn-client/releases/latest/download/arman-vpn-core-linux-arm64.tar.gz), [amd64](https://github.com/armanlife/arman-vpn-client/releases/latest/download/arman-vpn-core-linux-amd64.tar.gz), or [armv7](https://github.com/armanlife/arman-vpn-client/releases/latest/download/arman-vpn-core-linux-armv7.tar.gz) and unpack it.
+2. Download [arm64](https://github.com/sasa200000/v2rvpn-client/releases/latest/download/arman-vpn-core-linux-arm64.tar.gz), [amd64](https://github.com/sasa200000/v2rvpn-client/releases/latest/download/arman-vpn-core-linux-amd64.tar.gz), or [armv7](https://github.com/sasa200000/v2rvpn-client/releases/latest/download/arman-vpn-core-linux-armv7.tar.gz) and unpack it.
 3. Open [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) or [WinSCP](https://winscp.net/): router address, port 22, user `root`.
 4. Put `arman-vpn-core` in `/root/arman-vpn/` (make the folder).
 5. On the router: `chmod +x /root/arman-vpn/arman-vpn-core`

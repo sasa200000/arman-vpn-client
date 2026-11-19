@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/tunapi"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tunapi"
 )
 
 // InstallDir is the installed service's folder.

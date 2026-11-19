@@ -50,7 +50,7 @@ if (-not $env:GOTOOLCHAIN) {
     if ([version]$have -lt [version]$need) { $env:GOTOOLCHAIN = "go$need+auto" }
 }
 
-$ldflags = "-s -w -X github.com/armanlife/arman-vpn-client/core/internal/version.Current=$version"
+$ldflags = "-s -w -X github.com/sasa200000/v2rvpn-client/core/internal/version.Current=$version"
 
 # Optional local build settings (scripts\build-local.ps1), for a machine
 # that is set up to add its own. Without that file the ordinary library is

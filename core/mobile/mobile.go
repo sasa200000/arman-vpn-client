@@ -18,12 +18,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/config"
-	"github.com/armanlife/arman-vpn-client/core/internal/logx"
-	"github.com/armanlife/arman-vpn-client/core/internal/netstate"
-	"github.com/armanlife/arman-vpn-client/core/internal/securefile"
-	"github.com/armanlife/arman-vpn-client/core/internal/service"
-	"github.com/armanlife/arman-vpn-client/core/internal/tun"
+	"github.com/sasa200000/v2rvpn-client/core/internal/config"
+	"github.com/sasa200000/v2rvpn-client/core/internal/logx"
+	"github.com/sasa200000/v2rvpn-client/core/internal/netstate"
+	"github.com/sasa200000/v2rvpn-client/core/internal/securefile"
+	"github.com/sasa200000/v2rvpn-client/core/internal/service"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tun"
 )
 
 var (

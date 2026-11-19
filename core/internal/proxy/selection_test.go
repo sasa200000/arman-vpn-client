@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/serverlist"
+	"github.com/sasa200000/v2rvpn-client/core/internal/serverlist"
 )
 
 func TestNormalizeProxyURLAddsHTTPS(t *testing.T) {

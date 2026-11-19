@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/tunapi"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tunapi"
 )
 
 // InstallForUser installs the service for the user running this process

@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/serverlist"
+	"github.com/sasa200000/v2rvpn-client/core/internal/serverlist"
 )
 
 // The server list is saved when it is fetched, shown at once on the next

@@ -14,7 +14,7 @@ import (
 
 	"golang.org/x/net/dns/dnsmessage"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/egress"
+	"github.com/sasa200000/v2rvpn-client/core/internal/egress"
 )
 
 const (

@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/tunapi"
+	"github.com/sasa200000/v2rvpn-client/core/internal/tunapi"
 )
 
 // InstallDir is the installed service's folder.
@@ -19,7 +19,7 @@ const unitName = tunapi.ServiceName + ".service"
 // good (stopForGood).
 const unit = `[Unit]
 Description=V2RVPN TUN
-Documentation=https://github.com/armanlife/arman-vpn-client
+Documentation=https://github.com/sasa200000/v2rvpn-client
 After=network.target
 
 [Service]

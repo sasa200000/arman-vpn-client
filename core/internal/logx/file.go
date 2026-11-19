@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/securefile"
+	"github.com/sasa200000/v2rvpn-client/core/internal/securefile"
 )
 
 // The log folder holds one file per local day, arman-vpn-YYYY-MM-DD.log,

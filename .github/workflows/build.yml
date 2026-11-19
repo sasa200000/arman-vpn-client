@@ -224,7 +224,7 @@ jobs:
         run: |
           v='${{ needs.test.outputs.version }}'
           mkdir -p app/android/app/libs
-          flags="-s -w -X github.com/armanlife/arman-vpn-client/core/internal/version.Current=$v"
+          flags="-s -w -X github.com/sasa200000/v2rvpn-client/core/internal/version.Current=$v"
           # The build scripts' optional local settings (scripts/build-local.sh,
           # which the step above puts there when there is a profile). Without
           # it the ordinary library is built, which is what this repository's

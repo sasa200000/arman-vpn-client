@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/egress"
+	"github.com/sasa200000/v2rvpn-client/core/internal/egress"
 )
 
 // One own address coming back is chance; two different ones within the

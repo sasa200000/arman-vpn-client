@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs or updates V2RVPN from the newest release on GitHub:
 #
-#   curl -fsSL https://raw.githubusercontent.com/armanlife/arman-vpn-client/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/sasa200000/v2rvpn-client/main/install.sh | bash
 #
 # Without an argument it decides by itself:
 #   - macOS, or Linux with a graphical session: the app, for the current
@@ -24,7 +24,7 @@
 #   core/scripts/install-systemd.sh
 set -euo pipefail
 
-REPO="armanlife/arman-vpn-client"
+REPO="sasa200000/v2rvpn-client"
 RAW="https://raw.githubusercontent.com/$REPO/main/install.sh"
 VERSION="${VERSION:-latest}"
 if [ "$VERSION" = "latest" ]; then

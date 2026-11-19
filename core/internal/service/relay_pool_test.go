@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/armanlife/arman-vpn-client/core/internal/evasion"
+	"github.com/sasa200000/v2rvpn-client/core/internal/evasion"
 )
 
 func TestParseRelayNodesKeepsOnlyUsableEntries(t *testing.T) {

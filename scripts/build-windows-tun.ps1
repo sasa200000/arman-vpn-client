@@ -24,8 +24,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'go generate failed (arman-vpn-tun)' }
 
     # windowsgui: no console window when the app or Setup starts it.
-    $ldflags = "-s -w -H windowsgui -X github.com/armanlife/arman-vpn-client/core/internal/version.Current=$Version"
-    if ($public) { $ldflags += " -X github.com/armanlife/arman-vpn-client/core/internal/signing.Key=$public" }
+    $ldflags = "-s -w -H windowsgui -X github.com/sasa200000/v2rvpn-client/core/internal/version.Current=$Version"
+    if ($public) { $ldflags += " -X github.com/sasa200000/v2rvpn-client/core/internal/signing.Key=$public" }
     $exe = Join-Path $Out 'arman-vpn-tun.exe'
     go build -tags with_gvisor -trimpath -ldflags $ldflags -o $exe ./cmd/arman-vpn-tun
     if ($LASTEXITCODE -ne 0) { throw 'go build failed (arman-vpn-tun)' }
