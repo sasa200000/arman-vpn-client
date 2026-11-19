@@ -8,7 +8,7 @@ import (
 )
 
 // The adapter's description names this program, not sing-tun.
-func init() { tun.TunnelType = "Arman VPN" }
+func init() { tun.TunnelType = "V2RVPN" }
 
 func deviceName(name string) string { return name }
 

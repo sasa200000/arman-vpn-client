@@ -10,7 +10,7 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'Áttekintés';
@@ -1622,8 +1622,7 @@ class AppLocalizationsHu extends AppLocalizations {
       'A TUN-szolgáltatás újabb, mint ez az alkalmazás. A TUN mód használatához frissítse az alkalmazást.';
 
   @override
-  String get tunBusy =>
-      'Az Arman VPN egy másik példánya használja a TUN módot.';
+  String get tunBusy => 'Az V2RVPN egy másik példánya használja a TUN módot.';
 
   @override
   String get tunNoDriver =>
@@ -1650,11 +1649,11 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Az Arman VPN telepíteni szeretné a TUN mód szolgáltatását.';
+      'Az V2RVPN telepíteni szeretné a TUN mód szolgáltatását.';
 
   @override
   String get tunRemovePrompt =>
-      'Az Arman VPN el szeretné távolítani a TUN mód szolgáltatását.';
+      'Az V2RVPN el szeretné távolítani a TUN mód szolgáltatását.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1795,4 +1794,43 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get relayTestInterrupted =>
       'A teszt a teljes eredmény beérkezése előtt véget ért.';
+
+  @override
+  String get sectionLightDance => 'Fénytánc';
+
+  @override
+  String get danceShape => 'A gyűrű alakja';
+
+  @override
+  String get danceShapeChase => 'Üldözés';
+
+  @override
+  String get danceShapeTriple => 'Hármas';
+
+  @override
+  String get danceShapeDuet => 'Duett';
+
+  @override
+  String get danceShapeComet => 'Üstökös';
+
+  @override
+  String get danceShapeStars => 'Csillagok';
+
+  @override
+  String get danceSpeed => 'Ütem sebessége';
+
+  @override
+  String get danceSpeed1 => 'Lassú';
+
+  @override
+  String get danceSpeed2 => 'Normál';
+
+  @override
+  String get danceSpeed3 => 'Gyors';
+
+  @override
+  String get danceSpeed4 => 'Nagyon gyors';
+
+  @override
+  String get showLiveWave => 'Élő hullám';
 }

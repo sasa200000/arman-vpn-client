@@ -10,7 +10,7 @@ class AppLocalizationsAz extends AppLocalizations {
   AppLocalizationsAz([String locale = 'az']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'İcmal';
@@ -1610,8 +1610,7 @@ class AppLocalizationsAz extends AppLocalizations {
       'TUN xidməti bu tətbiqdən yenidir. TUN rejimindən istifadə etmək üçün tətbiqi yeniləyin.';
 
   @override
-  String get tunBusy =>
-      'Arman VPN-in başqa nüsxəsi TUN rejimindən istifadə edir.';
+  String get tunBusy => 'V2RVPN-in başqa nüsxəsi TUN rejimindən istifadə edir.';
 
   @override
   String get tunNoDriver =>
@@ -1638,11 +1637,11 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Arman VPN TUN rejimi üçün xidməti quraşdırmaq istəyir.';
+      'V2RVPN TUN rejimi üçün xidməti quraşdırmaq istəyir.';
 
   @override
   String get tunRemovePrompt =>
-      'Arman VPN TUN rejiminin xidmətini silmək istəyir.';
+      'V2RVPN TUN rejiminin xidmətini silmək istəyir.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1782,4 +1781,43 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get relayTestInterrupted => 'Tam nəticə alınmadan test başa çatdı.';
+
+  @override
+  String get sectionLightDance => 'İşıq rəqsi';
+
+  @override
+  String get danceShape => 'Halqa forması';
+
+  @override
+  String get danceShapeChase => 'Təqib';
+
+  @override
+  String get danceShapeTriple => 'Üçlü';
+
+  @override
+  String get danceShapeDuet => 'Duet';
+
+  @override
+  String get danceShapeComet => 'Kuyruklu ulduz';
+
+  @override
+  String get danceShapeStars => 'Ulduzlar';
+
+  @override
+  String get danceSpeed => 'Tempi';
+
+  @override
+  String get danceSpeed1 => 'Yavaş';
+
+  @override
+  String get danceSpeed2 => 'Normal';
+
+  @override
+  String get danceSpeed3 => 'Sürətli';
+
+  @override
+  String get danceSpeed4 => 'Çox sürətli';
+
+  @override
+  String get showLiveWave => 'Canlı dalğa';
 }

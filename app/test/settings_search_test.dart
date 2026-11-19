@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:arman_vpn/l10n/app_localizations.dart';
-import 'package:arman_vpn/l10n/app_localizations_en.dart';
-import 'package:arman_vpn/ui/settings_page.dart';
+import 'package:v2rvpn/l10n/app_localizations.dart';
+import 'package:v2rvpn/l10n/app_localizations_en.dart';
+import 'package:v2rvpn/ui/settings_page.dart';
 
 /// Where a section's own builder sits in the page's source, so a title found
 /// there belongs to that section.

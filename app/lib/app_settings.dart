@@ -78,6 +78,22 @@ class AppSettings extends ChangeNotifier {
   /// (UDP); on unless the user turned it off.
   bool udpNotice = true;
 
+  /// The running neon lights around the controls (ui/dance.dart). On unless
+  /// the user turned them off in Settings > Light dance: the dance is the
+  /// app's look, so it starts on, and the switch is there for a still app.
+  bool lightDance = true;
+
+  /// The shape the dance's ring takes (DanceShape.id).
+  String danceShape = 'chase';
+
+  /// The dance's speed in beats a second, 1 to 4. One is the plain "a color a
+  /// second" the design asks for.
+  int danceSpeed = 1;
+
+  /// The live wave on the home page while the connection runs: the traffic as
+  /// a sea that changes color with the dance. On with the dance.
+  bool showLiveWave = true;
+
   /// The columns the Logs page's Connections tab hides (ConnectionsView):
   /// at first all but the time, the destination, the rule, and the
   /// protocol. Kept in this file.
@@ -231,6 +247,21 @@ class AppSettings extends ChangeNotifier {
         s.autostartShowsWindow = j['autostart_shows_window'] == true;
         s.autoConnect = j['auto_connect'] == true;
         s.udpNotice = j['udp_notice'] != false;
+        s.lightDance = j['light_dance'] != false;
+        s.showLiveWave = j['show_live_wave'] != false;
+        if (j['dance_shape'] case final String v
+            when const [
+              'chase',
+              'triple',
+              'duet',
+              'comet',
+              'stars',
+            ].contains(v)) {
+          s.danceShape = v;
+        }
+        if (j['dance_speed'] case final int v when v >= 1 && v <= 4) {
+          s.danceSpeed = v;
+        }
         if (j['hidden_connection_columns'] case final List<Object?> v) {
           s.hiddenConnectionColumns = {...v.whereType<String>()};
         }
@@ -265,8 +296,16 @@ class AppSettings extends ChangeNotifier {
     bool? autostartShowsWindow,
     bool? autoConnect,
     bool? udpNotice,
+    bool? lightDance,
+    String? danceShape,
+    int? danceSpeed,
+    bool? showLiveWave,
     Set<String>? hiddenConnectionColumns,
   }) {
+    this.showLiveWave = showLiveWave ?? this.showLiveWave;
+    this.lightDance = lightDance ?? this.lightDance;
+    this.danceShape = danceShape ?? this.danceShape;
+    this.danceSpeed = danceSpeed ?? this.danceSpeed;
     this.hiddenConnectionColumns =
         hiddenConnectionColumns ?? this.hiddenConnectionColumns;
     this.udpNotice = udpNotice ?? this.udpNotice;
@@ -322,6 +361,10 @@ class AppSettings extends ChangeNotifier {
           'autostart_shows_window': autostartShowsWindow,
           'auto_connect': autoConnect,
           'udp_notice': udpNotice,
+          'light_dance': lightDance,
+          'dance_shape': danceShape,
+          'dance_speed': danceSpeed,
+          'show_live_wave': showLiveWave,
           'hidden_connection_columns': hiddenConnectionColumns.toList(),
         }),
       );

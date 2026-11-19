@@ -1,4 +1,4 @@
-# Arman VPN in Docker
+# V2RVPN in Docker
 
 The image is the Linux core: a SOCKS5 and HTTP proxy, and the web panel. It runs `arman-vpn-core -plain`. Debian is the image's system. The desktop app is not included.
 

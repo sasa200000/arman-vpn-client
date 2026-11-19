@@ -17,7 +17,9 @@ import '../platform.dart';
 import 'browser_signin.dart';
 import 'bypass_apps_page.dart';
 import 'connection_mode.dart';
+import 'dance.dart';
 import 'format.dart';
+import 'live_wave.dart';
 import 'port_dialog.dart';
 import 'widgets.dart';
 
@@ -404,6 +406,7 @@ class _DesktopHome extends StatelessWidget {
         : status.exit?.ipv6 ?? '';
     final place = homeLocation(l, status, connected: connected);
     final mismatch = exitMismatchText(l, status);
+    final dance = DanceScope.of(context);
     final cards = [
       _PlaceCard(
         palette: p,
@@ -423,17 +426,23 @@ class _DesktopHome extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Center(
-          child: _PowerOrb(
-            palette: p,
-            on: on,
-            accent: accent,
-            busy: core.switchingProxy,
-            connecting: confirming || status.state.phase == Phase.starting,
-            tooltip: on ? l.tapToDisconnect : l.tapToConnect,
-            // No account yet: the accounts page, which explains them.
-            onPressed: () => status.totalAccounts == 0
-                ? _openAccounts(context, core, settings, onOpenAccounts)
-                : runShowingErrors(context, () => _power(!on)),
+          child: ListenableBuilder(
+            listenable: dance.clock,
+            builder: (context, _) => _PowerOrb(
+              palette: p,
+              on: on,
+              accent: accent,
+              busy: core.switchingProxy,
+              connecting: confirming || status.state.phase == Phase.starting,
+              tick: dance.clock.tick,
+              shape: dance.shape,
+              danceOn: dance.on,
+              tooltip: on ? l.tapToDisconnect : l.tapToConnect,
+              // No account yet: the accounts page, which explains them.
+              onPressed: () => status.totalAccounts == 0
+                  ? _openAccounts(context, core, settings, onOpenAccounts)
+                  : runShowingErrors(context, () => _power(!on)),
+            ),
           ),
         ),
         const SizedBox(height: 10),
@@ -745,8 +754,8 @@ class _ModeSwitch extends StatelessWidget {
         onTap: onSelected == null
             ? null
             : chosen
-                ? (onTapSelected != null ? () => onTapSelected!(m.value) : null)
-                : () => onSelected(m.value),
+            ? (onTapSelected != null ? () => onTapSelected!(m.value) : null)
+            : () => onSelected(m.value),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Row(
@@ -1073,33 +1082,25 @@ class _PhoneHome extends StatelessWidget {
   }
 
   void _openBypassApps(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) => const BypassAppsPage(),
-      ),
-    ).then((_) async {
-      try {
-        final r = await AndroidCore.appRouting();
-        AndroidCore.appRoutingMode.value =
-            (r.onlyChosen || r.bypass.isNotEmpty) ? 'selected' : 'all';
-        AndroidCore.selectedAppsCount.value = r.chosenCount;
-      } catch (_) {}
-    });
+    Navigator.of(context)
+        .push(MaterialPageRoute<void>(builder: (_) => const BypassAppsPage()))
+        .then((_) async {
+          try {
+            final r = await AndroidCore.appRouting();
+            AndroidCore.appRoutingMode.value =
+                (r.onlyChosen || r.bypass.isNotEmpty) ? 'selected' : 'all';
+            AndroidCore.selectedAppsCount.value = r.chosenCount;
+          } catch (_) {}
+        });
   }
 
   Future<void> _openPortSettings(
     BuildContext context,
     CoreStatus status,
   ) async {
-    final port = await showPortDialog(
-      context,
-      taken: status.state.address,
-    );
+    final port = await showPortDialog(context, taken: status.state.address);
     if (port != null && context.mounted) {
-      await runShowingErrors(
-        context,
-        () => core.setProxyPort(port),
-      );
+      await runShowingErrors(context, () => core.setProxyPort(port));
     }
   }
 
@@ -1142,6 +1143,7 @@ class _PhoneHome extends StatelessWidget {
   Widget _content(BuildContext context, _HomePalette p, BoxConstraints box) {
     final l = AppLocalizations.of(context);
     final theme = Theme.of(context);
+    final dance = DanceScope.of(context);
     final look = PhaseLook.of(l, status);
     final running = status.state.phase == Phase.running;
     // Connecting, or connected but still waiting on a passing test: the
@@ -1255,21 +1257,27 @@ class _PhoneHome extends StatelessWidget {
               const Spacer(),
               SizedBox(height: short ? 4 : 16),
               Center(
-                child: _PowerOrb(
-                  palette: p,
-                  scale: short ? 0.68 : 1,
-                  // A TV starts on the switch, its ring showing.
-                  autofocus: Platform.isAndroid && AndroidCore.isTv,
-                  on: on,
-                  accent: accent,
-                  busy: core.switchingProxy,
-                  connecting: connecting,
-                  tooltip: press,
-                  // No account yet: the accounts page, which explains
-                  // them and links to Mozilla's sign-up.
-                  onPressed: () => status.totalAccounts == 0
-                      ? _openAccounts(context, core, settings, onOpenAccounts)
-                      : runShowingErrors(context, () => _toggle(on)),
+                child: ListenableBuilder(
+                  listenable: dance.clock,
+                  builder: (context, _) => _PowerOrb(
+                    palette: p,
+                    scale: short ? 0.68 : 1,
+                    // A TV starts on the switch, its ring showing.
+                    autofocus: Platform.isAndroid && AndroidCore.isTv,
+                    on: on,
+                    accent: accent,
+                    busy: core.switchingProxy,
+                    connecting: connecting,
+                    tick: dance.clock.tick,
+                    shape: dance.shape,
+                    danceOn: dance.on,
+                    tooltip: press,
+                    // No account yet: the accounts page, which explains
+                    // them and links to Mozilla's sign-up.
+                    onPressed: () => status.totalAccounts == 0
+                        ? _openAccounts(context, core, settings, onOpenAccounts)
+                        : runShowingErrors(context, () => _toggle(on)),
+                  ),
                 ),
               ),
               SizedBox(height: short ? 8 : 14),
@@ -1283,27 +1291,47 @@ class _PhoneHome extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               if (connected)
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 8,
-                  runSpacing: 8,
+                Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    _HomeDelay(core: core, palette: p),
-                    if (ip.isNotEmpty)
-                      _HomePill(
-                        palette: p,
-                        child: Text(
-                          '${l.publicIp} ${ltr(ip)}',
-                          style: theme.textTheme.labelLarge?.copyWith(
-                            color: p.muted,
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        _HomeDelay(core: core, palette: p),
+                        if (ip.isNotEmpty)
+                          _HomePill(
+                            palette: p,
+                            child: Text(
+                              '${l.publicIp} ${ltr(ip)}',
+                              style: theme.textTheme.labelLarge?.copyWith(
+                                color: p.muted,
+                              ),
+                            ),
+                          ),
+                        if (status.upstreamProxy.isNotEmpty)
+                          _UpstreamProxyPill(
+                            address: status.upstreamProxy,
+                            palette: p,
+                            onPressed: onOpenUpstreamProxy,
+                          ),
+                      ],
+                    ),
+                    if (dance.on && settings.showLiveWave)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: ListenableBuilder(
+                          listenable: dance.clock,
+                          builder: (context, _) => LiveWave(
+                            down: status.traffic?.downRate ?? 0,
+                            up: status.traffic?.upRate ?? 0,
+                            tick: dance.clock.tick,
+                            dark: p.dark,
+                            shape: dance.shape,
+                            height: 84,
                           ),
                         ),
-                      ),
-                    if (status.upstreamProxy.isNotEmpty)
-                      _UpstreamProxyPill(
-                        address: status.upstreamProxy,
-                        palette: p,
-                        onPressed: onOpenUpstreamProxy,
                       ),
                   ],
                 )
@@ -1428,7 +1456,8 @@ class _PhoneHome extends StatelessWidget {
                     final mode = AndroidCore.mode.value;
                     final routing = AndroidCore.appRoutingMode.value;
                     final selected = mode == 'proxy' ? 'proxy' : routing;
-                    final port = portOf(proxy?.listen ?? '') ??
+                    final port =
+                        portOf(proxy?.listen ?? '') ??
                         portOf(status.state.address) ??
                         10810;
                     return Column(
@@ -1533,11 +1562,11 @@ class _PhoneHome extends StatelessWidget {
                                     const SizedBox(width: 6),
                                     Text(
                                       '${l.proxyPort}: $port',
-                                      style:
-                                          theme.textTheme.bodySmall?.copyWith(
-                                        color: p.text,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                      style: theme.textTheme.bodySmall
+                                          ?.copyWith(
+                                            color: p.text,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                     ),
                                     const SizedBox(width: 6),
                                     Icon(
@@ -1579,11 +1608,11 @@ class _PhoneHome extends StatelessWidget {
                                       l.selectedAppsCount(
                                         '${AndroidCore.selectedAppsCount.value}',
                                       ),
-                                      style:
-                                          theme.textTheme.bodySmall?.copyWith(
-                                        color: p.text,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                      style: theme.textTheme.bodySmall
+                                          ?.copyWith(
+                                            color: p.text,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                     ),
                                     const SizedBox(width: 4),
                                     Icon(
@@ -1885,6 +1914,9 @@ class _PowerOrb extends StatelessWidget {
     this.connecting = false,
     required this.tooltip,
     required this.onPressed,
+    this.tick = 0,
+    this.shape = DanceShape.chase,
+    this.danceOn = false,
   });
 
   final _HomePalette palette;
@@ -1895,6 +1927,12 @@ class _PowerOrb extends StatelessWidget {
   final bool on;
   final Color accent;
   final bool busy;
+
+  /// The light dance's beat and shape: the ring around the button turns in
+  /// the beat's color, canary yellow while off.
+  final int tick;
+  final DanceShape shape;
+  final bool danceOn;
 
   /// The core is connecting, which can take a while. The ring moves so the
   /// wait reads as expected progress rather than a stuck button.
@@ -1956,6 +1994,26 @@ class _PowerOrb extends StatelessWidget {
                 ),
               ),
             ),
+            // The light dance: the neon ring that runs around the switch.
+            // Canary yellow until the VPN is up, then each second's color,
+            // so the button itself says which state it is in.
+            if (danceOn)
+              SizedBox.square(
+                dimension: ring + 18 * scale,
+                child: DanceRingBox(
+                  pad: 6 * scale,
+                  ring: DanceRing(
+                    radius: 0,
+                    stroke: 2.8 * scale,
+                    tick: tick,
+                    color: ringColor(live: on, tick: tick),
+                    phase: ((tick % 3) / 3),
+                    glow: on ? 1.0 : 0.55,
+                    spokes: shape.spokes,
+                  ),
+                  child: const SizedBox.expand(),
+                ),
+              ),
             // Connecting can take a while when Mozilla is slow to answer,
             // so the ring keeps moving to show the wait is expected and
             // something is still happening.

@@ -642,7 +642,7 @@ func (ui *consoleUI) exitCompletely(own bool, status *service.StatusView) {
 		return
 	}
 	// Exiting never waits for another task (such as a latency measurement).
-	ui.setMessage("Exiting Arman VPN…", ansiYellow)
+	ui.setMessage("Exiting V2RVPN…", ansiYellow)
 	go func() {
 		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 		defer cancel()
@@ -832,9 +832,9 @@ func (ui *consoleUI) homeScreen(width, height int) []string {
 	label, text, color := "connecting", "Connecting…", ansiGrey
 	switch {
 	case st == nil && ui.lastErr != "":
-		label, text, color = "stopped", "Arman VPN is not running", ansiRed
+		label, text, color = "stopped", "V2RVPN is not running", ansiRed
 	case st != nil && ui.lastErr != "":
-		label, text = "unreachable", "Arman VPN does not answer"
+		label, text = "unreachable", "V2RVPN does not answer"
 	case st != nil:
 		label, text = phaseLabel(st.State.Phase), st.State.Message
 		switch st.State.Phase {
@@ -939,14 +939,14 @@ func (ui *consoleUI) menuItems() []menuItem {
 			items = append(items, menuItem{action: actSysProxy, label: label, group: 2})
 		}
 	} else if !own {
-		items = append(items, menuItem{action: actStart, label: "Start Arman VPN", group: 2})
+		items = append(items, menuItem{action: actStart, label: "Start V2RVPN", group: 2})
 	}
 	if online {
 		items = append(items, menuItem{action: actReset, label: "Set panel login", group: 3})
 	}
 	items = append(items, menuItem{action: actLog, label: "Show the log", group: 4})
 	if !own && st != nil && st.CanExit {
-		items = append(items, menuItem{action: actExit, label: "Exit Arman VPN completely", group: 4})
+		items = append(items, menuItem{action: actExit, label: "Exit V2RVPN completely", group: 4})
 	}
 	return items
 }

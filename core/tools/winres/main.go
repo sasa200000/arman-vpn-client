@@ -28,10 +28,10 @@ import (
 type program struct{ description, name string }
 
 var programs = map[string]program{
-	"core": {"Arman VPN Core", "arman-vpn-core"},
+	"core": {"V2RVPN Core", "arman-vpn-core"},
 	// The administrator prompt shows this description when the app
 	// installs the service.
-	"tun": {"Arman VPN TUN", "arman-vpn-tun"},
+	"tun": {"V2RVPN TUN", "arman-vpn-tun"},
 }
 
 func main() {
@@ -67,13 +67,13 @@ func run(p program) error {
 	vi.SetFileVersion(release)
 	vi.SetProductVersion(release)
 	for key, value := range map[string]string{
-		winversion.ProductName:      "Arman VPN",
+		winversion.ProductName:      "V2RVPN",
 		winversion.FileDescription:  p.description,
 		winversion.OriginalFilename: p.name + ".exe",
 		winversion.InternalName:     p.name,
 		// The publisher, as in the installer (AppPublisher) and the app.
-		winversion.CompanyName:    "Arman",
-		winversion.LegalCopyright: "Copyright (c) 2026 Arman",
+		winversion.CompanyName:    "V2RVPN",
+		winversion.LegalCopyright: "Copyright (c) 2026 V2RVPN",
 	} {
 		if err := vi.Set(winversion.LangDefault, key, value); err != nil {
 			return err

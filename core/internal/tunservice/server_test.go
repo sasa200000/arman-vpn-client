@@ -80,7 +80,7 @@ func newHarness(t *testing.T, cfg Config) *harness {
 	if cfg.Version == "" {
 		cfg.Version = "1.2.3"
 	}
-	cfg.Self = `C:\Program Files\Arman VPN\arman-vpn-tun.exe`
+	cfg.Self = `C:\Program Files\V2RVPN\arman-vpn-tun.exe`
 	h.s = NewServer(cfg)
 	h.s.openDevice = func(c tunstack.Config) (device, error) {
 		if h.noDriver.Load() {
@@ -100,7 +100,7 @@ func newHarness(t *testing.T, cfg Config) *harness {
 		return f, nil
 	}
 	h.s.adapterUp = func(uint32) bool { return h.up.Load() }
-	h.s.clientPath = func(net.Conn) (string, error) { return `C:\Apps\Arman VPN\core\arman-vpn-core.exe`, nil }
+	h.s.clientPath = func(net.Conn) (string, error) { return `C:\Apps\V2RVPN\core\arman-vpn-core.exe`, nil }
 	h.s.allowed = func(c net.Conn) bool { return !h.stranger.Load() }
 	h.ln = newPipeListener()
 	go func() { _ = h.s.Serve(h.ln) }()

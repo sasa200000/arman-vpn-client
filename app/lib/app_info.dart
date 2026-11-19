@@ -14,7 +14,7 @@ const appVersion = String.fromEnvironment('APP_VERSION', defaultValue: '0.0.0');
 
 /// The GitHub repository, "owner/name", for the source link and the update
 /// check.
-const githubRepo = 'armanlife/arman-vpn-client';
+const githubRepo = 'sasa200000/v2rvpn';
 
 /// The update manifest and its mirror. A build may name others
 /// (--dart-define=UPDATE_MANIFEST_URL=..., UPDATE_MANIFEST_MIRROR=...) to
@@ -22,13 +22,12 @@ const githubRepo = 'armanlife/arman-vpn-client';
 /// the one every installed app reads.
 const updateManifestUrl = String.fromEnvironment(
   'UPDATE_MANIFEST_URL',
-  defaultValue:
-      'https://raw.githubusercontent.com/arman-org/update-manifests/main/arman-vpn-client/updates.json',
+  defaultValue: 'https://raw.githubusercontent.com/sasa200000/v2rvpn/main/.github/updates.json',
 );
 const updateManifestMirror = String.fromEnvironment(
   'UPDATE_MANIFEST_MIRROR',
   defaultValue:
-      'https://cdn.jsdelivr.net/gh/arman-org/update-manifests@main/arman-vpn-client/updates.json',
+      'https://cdn.jsdelivr.net/gh/sasa200000/v2rvpn@main/.github/updates.json',
 );
 
 /// A release server used instead of GitHub, to try updates with a local
@@ -48,7 +47,7 @@ String linuxName(String platformVersion) =>
     'Linux-${platformVersion.contains('arm64') ? 'arm64' : 'amd64'}.tar.gz';
 
 /// The name part of the release file that [os]'s app installs or downloads
-/// (`Arman-VPN-<version>-<part>`); a release that has it was built for
+/// (`V2RVPN-<version>-<part>`); a release that has it was built for
 /// [os]. null for another system.
 String? releaseFilePart(String os) => switch (os) {
   'windows' => 'Windows-x64.zip',
@@ -137,7 +136,7 @@ Future<Release?> checkForUpdate({
         ? 'https://github.com/$repo/releases'
         : '$srv/releases';
     final part = releaseFilePart(system);
-    final file = part == null ? 'SHA256SUMS.txt' : 'Arman-VPN-$wanted-$part';
+    final file = part == null ? 'SHA256SUMS.txt' : 'V2RVPN-$wanted-$part';
     if (!await _published(client, '$releases/download/v$wanted/$file')) {
       throw HttpException('version $wanted is not published yet');
     }
@@ -256,8 +255,8 @@ Future<Release?> _latestRelease(
     };
     final downloads = <String, Object?>{};
     for (final entry in parts.entries) {
-      final fixed = 'Arman-VPN-${entry.value}';
-      final versioned = 'Arman-VPN-$version-${entry.value}';
+      final fixed = 'V2RVPN-${entry.value}';
+      final versioned = 'V2RVPN-$version-${entry.value}';
       final file = assets.containsKey(fixed) ? fixed : versioned;
       if (assets.containsKey(file)) {
         downloads[entry.key] = {'file': file, 'url': assets[file]};
@@ -289,7 +288,7 @@ Future<bool> _published(HttpClient client, String url) async {
       .timeout(const Duration(seconds: 20));
   req
     ..followRedirects = false
-    ..headers.set(HttpHeaders.userAgentHeader, 'arman-vpn/$appVersion');
+    ..headers.set(HttpHeaders.userAgentHeader, 'v2rvpn/$appVersion');
   final res = await req.close().timeout(const Duration(seconds: 20));
   await res.drain<void>();
   if (res.statusCode == 404) return false;
@@ -312,7 +311,7 @@ Future<(int, String)> _get(
       .timeout(const Duration(seconds: 20));
   req.headers
     ..set(HttpHeaders.acceptHeader, accept)
-    ..set(HttpHeaders.userAgentHeader, 'arman-vpn/$appVersion');
+    ..set(HttpHeaders.userAgentHeader, 'v2rvpn/$appVersion');
   final res = await req.close().timeout(const Duration(seconds: 20));
   final bytes = BytesBuilder(copy: false);
   await for (final chunk in res.timeout(const Duration(seconds: 20))) {

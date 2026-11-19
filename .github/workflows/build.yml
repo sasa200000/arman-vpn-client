@@ -2,7 +2,7 @@
 # app/pubspec.yaml) also builds Windows, macOS, Android, Linux, and the Linux
 # core, and publishes them as a GitHub release, each file twice: under a
 # fixed name, which the README's releases/latest/download links fetch, and
-# with the version in its name (Arman-VPN-1.2.3-Android-arm64-v8a.apk),
+# with the version in its name (V2RVPN-1.2.3-Android-arm64-v8a.apk),
 # which the release notes and older installed apps use during the update
 # manifest transition. "Run workflow" builds without
 # publishing. The same tag publishes the container image
@@ -161,8 +161,8 @@ jobs:
         run: |
           $v = '${{ needs.test.outputs.version }}'
           New-Item -ItemType Directory out | Out-Null
-          Move-Item "dist/Arman-VPN-$v-Windows-x64.zip" out/Arman-VPN-Windows-x64.zip
-          Move-Item "dist/Arman-VPN-$v-Windows-Setup-x64.exe" out/Arman-VPN-Windows-Setup-x64.exe
+          Move-Item "dist/V2RVPN-$v-Windows-x64.zip" out/V2RVPN-Windows-x64.zip
+          Move-Item "dist/V2RVPN-$v-Windows-Setup-x64.exe" out/V2RVPN-Windows-Setup-x64.exe
       - uses: actions/upload-artifact@v7
         with:
           name: windows
@@ -264,10 +264,10 @@ jobs:
           mkdir -p ../out
           flutter build apk --release --split-per-abi --dart-define=APP_VERSION=$v
           for abi in arm64-v8a armeabi-v7a x86_64; do
-            cp "build/app/outputs/flutter-apk/app-$abi-release.apk" "../out/Arman-VPN-Android-$abi.apk"
+            cp "build/app/outputs/flutter-apk/app-$abi-release.apk" "../out/V2RVPN-Android-$abi.apk"
           done
           flutter build apk --release --dart-define=APP_VERSION=$v
-          cp build/app/outputs/flutter-apk/app-release.apk ../out/Arman-VPN-Android-universal.apk
+          cp build/app/outputs/flutter-apk/app-release.apk ../out/V2RVPN-Android-universal.apk
       - name: Remove the key
         if: always()
         run: rm -f app/android/release.jks app/android/key.properties
@@ -381,7 +381,7 @@ jobs:
       - name: Release name
         run: |
           mkdir out
-          mv "dist/Arman-VPN-${{ needs.test.outputs.version }}-Linux-${{ matrix.arch }}.tar.gz" "out/Arman-VPN-Linux-${{ matrix.arch }}.tar.gz"
+          mv "dist/V2RVPN-${{ needs.test.outputs.version }}-Linux-${{ matrix.arch }}.tar.gz" "out/V2RVPN-Linux-${{ matrix.arch }}.tar.gz"
       - uses: actions/upload-artifact@v7
         with:
           name: linux-desktop-${{ matrix.arch }}
@@ -442,7 +442,7 @@ jobs:
           for i in $(seq 20); do sudo launchctl print system/com.arman.firefoxvpn.tun >/dev/null 2>&1 || break; sleep 0.5; done
           if sudo launchctl print system/com.arman.firefoxvpn.tun >/dev/null 2>&1; then echo "the job is still loaded"; exit 1; fi
           test ! -e /Library/LaunchDaemons/com.arman.firefoxvpn.tun.plist
-          test ! -e "/Library/Application Support/Arman VPN TUN"
+          test ! -e "/Library/Application Support/V2RVPN TUN"
       # The optional build profile, when this repository has the secrets for
       # one; without them this does nothing and the ordinary client is built.
       - name: Build profile
@@ -480,8 +480,8 @@ jobs:
       - name: Release name
         run: |
           mkdir out
-          mv "dist/Arman-VPN-${{ needs.test.outputs.version }}-macOS.dmg" out/Arman-VPN-macOS.dmg
-          mv "dist/Arman-VPN-${{ needs.test.outputs.version }}-macOS.tar.gz" out/Arman-VPN-macOS.tar.gz
+          mv "dist/V2RVPN-${{ needs.test.outputs.version }}-macOS.dmg" out/V2RVPN-macOS.dmg
+          mv "dist/V2RVPN-${{ needs.test.outputs.version }}-macOS.tar.gz" out/V2RVPN-macOS.tar.gz
       - uses: actions/upload-artifact@v7
         with:
           name: macos
@@ -516,9 +516,9 @@ jobs:
           v="${GITHUB_REF_NAME#v}"
           for f in *; do
             case "$f" in
-              Arman-VPN-*)
-                rest="${f#Arman-VPN-}"
-                cp "$f" "Arman-VPN-$v-$rest"
+              V2RVPN-*)
+                rest="${f#V2RVPN-}"
+                cp "$f" "V2RVPN-$v-$rest"
                 cp "$f" "Firefox-VPN-$rest"
                 cp "$f" "Firefox-VPN-$v-$rest" ;;
               arman-vpn-core-*) cp "$f" "arman-vpn-core-$v-${f#arman-vpn-core-}" ;;
@@ -529,7 +529,7 @@ jobs:
         working-directory: release
         run: |
           sha256sum * > SHA256SUMS.txt
-          printf '# Arman VPN version: %s\n' "${GITHUB_REF_NAME#v}" >> SHA256SUMS.txt
+          printf '# V2RVPN version: %s\n' "${GITHUB_REF_NAME#v}" >> SHA256SUMS.txt
           cat SHA256SUMS.txt
       # The Windows app installs a new version only when the release key
       # signed this list (core/internal/update): SHA256SUMS.txt.sig.
@@ -552,5 +552,5 @@ jobs:
           bash scripts/release-notes.sh "$GITHUB_REF_NAME" > notes.md
           gh release create "$GITHUB_REF_NAME" release/* \
             --repo "$GITHUB_REPOSITORY" \
-            --title "Arman VPN ${{ needs.test.outputs.version }}" \
+            --title "V2RVPN ${{ needs.test.outputs.version }}" \
             --notes-file notes.md

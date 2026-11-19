@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds the Linux desktop app with its core, for this machine's processor
-# (amd64 or arm64), into dist/Arman-VPN-<version>-Linux-<arch>.tar.gz: a
+# (amd64 or arm64), into dist/V2RVPN-<version>-Linux-<arch>.tar.gz: a
 # arman-vpn folder with arman-vpn (the Flutter app), core/arman-vpn-core
 # (the Go core, which the app starts with -app), core/arman-vpn-tun (the
 # TUN mode's service, which the app installs as a systemd service the first
@@ -82,6 +82,6 @@ ln -s arman-vpn "$app/firefox-vpn"
 ln -s arman-vpn-core "$app/core/firefox-vpn-core"
 
 mkdir -p "$root/dist"
-out="$root/dist/Arman-VPN-$version-Linux-$arch.tar.gz"
+out="$root/dist/V2RVPN-$version-Linux-$arch.tar.gz"
 tar -czf "$out" -C "$stage" --owner=0 --group=0 arman-vpn
 echo "Built $out ($(du -h "$out" | cut -f1))"

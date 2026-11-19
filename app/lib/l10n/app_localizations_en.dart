@@ -10,7 +10,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'Overview';
@@ -1614,7 +1614,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'The TUN service is newer than this app. Update the app to use TUN mode.';
 
   @override
-  String get tunBusy => 'Another copy of Arman VPN is using TUN mode.';
+  String get tunBusy => 'Another copy of V2RVPN is using TUN mode.';
 
   @override
   String get tunNoDriver =>
@@ -1641,11 +1641,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Arman VPN wants to install the service for TUN mode.';
+      'V2RVPN wants to install the service for TUN mode.';
 
   @override
   String get tunRemovePrompt =>
-      'Arman VPN wants to remove the service for TUN mode.';
+      'V2RVPN wants to remove the service for TUN mode.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1786,4 +1786,43 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get relayTestInterrupted =>
       'The test ended before a complete result was received.';
+
+  @override
+  String get sectionLightDance => 'Light dance';
+
+  @override
+  String get danceShape => 'Ring shape';
+
+  @override
+  String get danceShapeChase => 'Chase';
+
+  @override
+  String get danceShapeTriple => 'Triple';
+
+  @override
+  String get danceShapeDuet => 'Duet';
+
+  @override
+  String get danceShapeComet => 'Comet';
+
+  @override
+  String get danceShapeStars => 'Stars';
+
+  @override
+  String get danceSpeed => 'Beat speed';
+
+  @override
+  String get danceSpeed1 => 'Slow';
+
+  @override
+  String get danceSpeed2 => 'Normal';
+
+  @override
+  String get danceSpeed3 => 'Fast';
+
+  @override
+  String get danceSpeed4 => 'Very fast';
+
+  @override
+  String get showLiveWave => 'Live wave';
 }

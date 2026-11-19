@@ -28,9 +28,9 @@ import (
 // its file or put a library beside it. The app carries the same
 // executable in its core folder, and installs it from there.
 const (
-	installFolder = "Arman VPN"
-	displayName   = "Arman VPN TUN"
-	description   = "Runs the TUN mode of Arman VPN."
+	installFolder = "V2RVPN"
+	displayName   = "V2RVPN TUN"
+	description   = "Runs the TUN mode of V2RVPN."
 	newExeName    = "arman-vpn-tun.new.exe"
 	oldExeName    = "arman-vpn-tun.old.exe"
 )
@@ -303,7 +303,7 @@ func Cleanup(pid int, dir string) error {
 }
 
 // removeFolder removes the service's folder, never another: only the
-// Arman VPN folder in Program Files.
+// V2RVPN folder in Program Files.
 func removeFolder(dir string) error {
 	want, err := InstallDir()
 	if err != nil {

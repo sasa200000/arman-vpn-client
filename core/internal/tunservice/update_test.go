@@ -73,7 +73,7 @@ func TestABuildWithoutAKeyTakesNoUpdates(t *testing.T) {
 }
 
 func TestTheSignatureOfAMacAppsExecutableIsInItsResources(t *testing.T) {
-	app := filepath.Join("Applications", "Arman VPN.app", "Contents")
+	app := filepath.Join("Applications", "V2RVPN.app", "Contents")
 	for exe, want := range map[string]string{
 		filepath.Join(app, "MacOS", "arman-vpn-tun"): filepath.Join(app, "Resources", "arman-vpn-tun.sig"),
 		filepath.Join("opt", "arman-vpn-tun", "x"):   filepath.Join("opt", "arman-vpn-tun", "x.sig"),

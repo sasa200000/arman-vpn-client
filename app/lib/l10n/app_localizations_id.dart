@@ -10,7 +10,7 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'Ringkasan';
@@ -1609,7 +1609,7 @@ class AppLocalizationsId extends AppLocalizations {
       'Layanan TUN lebih baru dari aplikasi ini. Perbarui aplikasi untuk memakai mode TUN.';
 
   @override
-  String get tunBusy => 'Salinan lain Arman VPN sedang memakai mode TUN.';
+  String get tunBusy => 'Salinan lain V2RVPN sedang memakai mode TUN.';
 
   @override
   String get tunNoDriver =>
@@ -1636,10 +1636,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Arman VPN ingin memasang layanan untuk mode TUN.';
+      'V2RVPN ingin memasang layanan untuk mode TUN.';
 
   @override
-  String get tunRemovePrompt => 'Arman VPN ingin menghapus layanan mode TUN.';
+  String get tunRemovePrompt => 'V2RVPN ingin menghapus layanan mode TUN.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1780,4 +1780,43 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get relayTestInterrupted =>
       'Pengujian berakhir sebelum hasil lengkap diterima.';
+
+  @override
+  String get sectionLightDance => 'Tari cahaya';
+
+  @override
+  String get danceShape => 'Bentuk cincin';
+
+  @override
+  String get danceShapeChase => 'Kejar';
+
+  @override
+  String get danceShapeTriple => 'Trio';
+
+  @override
+  String get danceShapeDuet => 'Duet';
+
+  @override
+  String get danceShapeComet => 'Komet';
+
+  @override
+  String get danceShapeStars => 'Bintang';
+
+  @override
+  String get danceSpeed => 'Kecepatan irama';
+
+  @override
+  String get danceSpeed1 => 'Lambat';
+
+  @override
+  String get danceSpeed2 => 'Normal';
+
+  @override
+  String get danceSpeed3 => 'Cepat';
+
+  @override
+  String get danceSpeed4 => 'Sangat cepat';
+
+  @override
+  String get showLiveWave => 'Gelombang langsung';
 }

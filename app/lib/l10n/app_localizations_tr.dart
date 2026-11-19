@@ -10,7 +10,7 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'Genel bakış';
@@ -1610,8 +1610,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'TUN hizmeti bu uygulamadan yeni. TUN modunu kullanmak için uygulamayı güncelleyin.';
 
   @override
-  String get tunBusy =>
-      'Arman VPN\'in başka bir kopyası TUN modunu kullanıyor.';
+  String get tunBusy => 'V2RVPN\'in başka bir kopyası TUN modunu kullanıyor.';
 
   @override
   String get tunNoDriver =>
@@ -1638,11 +1637,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Arman VPN, TUN modu için hizmeti yüklemek istiyor.';
+      'V2RVPN, TUN modu için hizmeti yüklemek istiyor.';
 
   @override
   String get tunRemovePrompt =>
-      'Arman VPN, TUN modunun hizmetini kaldırmak istiyor.';
+      'V2RVPN, TUN modunun hizmetini kaldırmak istiyor.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1782,4 +1781,43 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get relayTestInterrupted => 'Test, tam sonuç alınmadan sona erdi.';
+
+  @override
+  String get sectionLightDance => 'Işık dansı';
+
+  @override
+  String get danceShape => 'Halka biçimi';
+
+  @override
+  String get danceShapeChase => 'Kovalamaca';
+
+  @override
+  String get danceShapeTriple => 'Üçlü';
+
+  @override
+  String get danceShapeDuet => 'Düet';
+
+  @override
+  String get danceShapeComet => 'Kuyruklu yıldız';
+
+  @override
+  String get danceShapeStars => 'Yıldızlar';
+
+  @override
+  String get danceSpeed => 'Tempo';
+
+  @override
+  String get danceSpeed1 => 'Yavaş';
+
+  @override
+  String get danceSpeed2 => 'Normal';
+
+  @override
+  String get danceSpeed3 => 'Hızlı';
+
+  @override
+  String get danceSpeed4 => 'Çok hızlı';
+
+  @override
+  String get showLiveWave => 'Canlı dalga';
 }

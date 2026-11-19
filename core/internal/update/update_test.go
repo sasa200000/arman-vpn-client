@@ -46,14 +46,14 @@ func newRelease(t *testing.T, v string) *release {
 	t.Cleanup(func() { signing.Key = old })
 	r := &release{version: v, priv: priv, files: map[string][]byte{
 		AssetName(v): appZip(t, map[string]string{
-			"Arman VPN/arman-vpn.exe":              "app " + v,
-			"Arman VPN/flutter_windows.dll":        "flutter " + v,
-			"Arman VPN/data/app.so":                "assets " + v,
-			"Arman VPN/core/arman-vpn-core.exe":    "core " + v,
-			"Arman VPN/core/arman-vpn-tun.exe":     "tun " + v,
-			"Arman VPN/core/arman-vpn-tun.exe.sig": "sig " + v,
+			"V2RVPN/arman-vpn.exe":              "app " + v,
+			"V2RVPN/flutter_windows.dll":        "flutter " + v,
+			"V2RVPN/data/app.so":                "assets " + v,
+			"V2RVPN/core/arman-vpn-core.exe":    "core " + v,
+			"V2RVPN/core/arman-vpn-tun.exe":     "tun " + v,
+			"V2RVPN/core/arman-vpn-tun.exe.sig": "sig " + v,
 		}),
-		"Arman-VPN-" + v + "-Windows-Setup-x64.exe": []byte("MZ setup " + v),
+		"V2RVPN-" + v + "-Windows-Setup-x64.exe": []byte("MZ setup " + v),
 	}}
 	r.sign()
 	return r
@@ -378,9 +378,9 @@ func TestInstallPassesOnlyTheAppsOwnArguments(t *testing.T) {
 }
 
 func TestUnzipRefusesNamesOutsideTheFolder(t *testing.T) {
-	for _, name := range []string{"../evil.exe", "Arman VPN/../../evil.exe", "/abs.exe", `C:\evil.exe`, "Arman VPN/core/arman-vpn-core.exe:hidden"} {
+	for _, name := range []string{"../evil.exe", "V2RVPN/../../evil.exe", "/abs.exe", `C:\evil.exe`, "V2RVPN/core/arman-vpn-core.exe:hidden"} {
 		file := filepath.Join(t.TempDir(), "x.zip")
-		os.WriteFile(file, appZip(t, map[string]string{name: "x", "Arman VPN/arman-vpn.exe": "app"}), 0o644)
+		os.WriteFile(file, appZip(t, map[string]string{name: "x", "V2RVPN/arman-vpn.exe": "app"}), 0o644)
 		if err := unzip(file, filepath.Join(t.TempDir(), "out")); err == nil {
 			t.Errorf("%q: unpacked", name)
 		}

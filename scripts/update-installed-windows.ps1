@@ -1,6 +1,6 @@
 # Builds the Windows app and its core and puts them over the installed copy
 # (the Setup's per-user install, in the folder chosen at install time; by
-# default %LOCALAPPDATA%\Programs\Arman VPN), to try a change
+# default %LOCALAPPDATA%\Programs\V2RVPN), to try a change
 # without making and running an installer:
 # - a running copy is closed first: the app by its process id, after which
 #   its core restores the system proxy and exits, as when the app quits;
@@ -30,7 +30,7 @@ if ($AppVersion) { $version = $AppVersion }
 # app\windows\installer\arman-vpn.iss).
 $uninstallKey = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\{6F3A2C1E-9B4D-4E7A-8C21-5D0F7B9E4A63}_is1'
 $dir = (Get-ItemProperty $uninstallKey -ErrorAction SilentlyContinue).InstallLocation
-if (-not $dir) { throw 'Arman VPN is not installed for this user; run the Setup once' }
+if (-not $dir) { throw 'V2RVPN is not installed for this user; run the Setup once' }
 $dir = $dir.TrimEnd('\')
 $appExe = "$dir\arman-vpn.exe"
 $dataDir = "$dir\user-data"

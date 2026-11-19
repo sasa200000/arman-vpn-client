@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:arman_vpn/ui/format.dart';
+import 'package:v2rvpn/ui/format.dart';
 
 void main() {
   test('a search finds a name whatever keyboard wrote it', () {

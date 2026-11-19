@@ -10,6 +10,7 @@ import '../core/models.dart';
 import '../l10n/app_localizations.dart';
 import 'about_page.dart';
 import 'announcement_panel.dart';
+import 'dance.dart';
 import 'accounts_page.dart';
 import 'focus_ring.dart';
 import 'format.dart';
@@ -73,7 +74,7 @@ ThemeData _theme(Brightness brightness, Locale locale) {
   );
 }
 
-class VpnApp extends StatelessWidget {
+class VpnApp extends StatefulWidget {
   const VpnApp({
     super.key,
     required this.core,
@@ -91,39 +92,86 @@ class VpnApp extends StatelessWidget {
   ];
 
   @override
+  State<VpnApp> createState() => _VpnAppState();
+}
+
+class _VpnAppState extends State<VpnApp> {
+  /// The dance's beat, one for the whole app, so every ring changes color in
+  /// step. It runs only while the dance is on (Settings > Light dance). In a
+  /// test nothing ticks: a repeating timer would leave the test's own clock
+  /// unsettled, and a still first frame has everything a test checks.
+  late final DanceClock _dance = DanceClock(
+    enabled: widget.settings.lightDance && !_testing,
+    speed: widget.settings.danceSpeed,
+  )..start();
+
+  static final bool _testing = Platform.environment['FLUTTER_TEST'] == 'true';
+
+  @override
+  void initState() {
+    super.initState();
+    widget.settings.addListener(_syncDance);
+  }
+
+  void _syncDance() {
+    _dance.setEnabled(widget.settings.lightDance && !_testing);
+    _dance.setSpeed(widget.settings.danceSpeed);
+  }
+
+  @override
+  void dispose() {
+    widget.settings.removeListener(_syncDance);
+    _dance.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => ListenableBuilder(
-    listenable: settings,
-    builder: (context, _) => MaterialApp(
-      navigatorKey: navigatorKey,
-      onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
-      debugShowCheckedModeBanner: false,
-      locale: settings.locale,
-      supportedLocales: AppLocalizations.supportedLocales,
-      localeListResolutionCallback: (locales, _) =>
-          AppSettings.localeOf(AppSettings.languageForList(locales)),
-      localizationsDelegates: localizationsDelegates,
-      // The theme depends on the resolved language for its font.
-      builder: (context, child) {
-        final locale = Localizations.localeOf(context);
-        final dark = switch (settings.themeMode) {
-          ThemeMode.dark => true,
-          ThemeMode.light => false,
-          ThemeMode.system =>
-            MediaQuery.platformBrightnessOf(context) == Brightness.dark,
-        };
-        return Theme(
-          data: _theme(dark ? Brightness.dark : Brightness.light, locale),
-          // A clear ring around what a remote or the keyboard chose.
-          child: FocusRing(
-            atStart: Platform.isAndroid && AndroidCore.isTv,
-            child: child!,
-          ),
-        );
-      },
-      home: Shell(core: core, settings: settings),
+    listenable: widget.settings,
+    builder: (context, _) => DanceScope(
+      clock: _dance,
+      settings: widget.settings,
+      child: MaterialApp(
+        navigatorKey: widget.navigatorKey,
+        onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
+        debugShowCheckedModeBanner: false,
+        locale: widget.settings.locale,
+        supportedLocales: AppLocalizations.supportedLocales,
+        localeListResolutionCallback: (locales, _) =>
+            AppSettings.localeOf(AppSettings.languageForList(locales)),
+        localizationsDelegates: VpnApp.localizationsDelegates,
+        // The theme depends on the resolved language for its font.
+        builder: (context, child) {
+          final locale = Localizations.localeOf(context);
+          final dark = switch (widget.settings.themeMode) {
+            ThemeMode.dark => true,
+            ThemeMode.light => false,
+            ThemeMode.system =>
+              MediaQuery.platformBrightnessOf(context) == Brightness.dark,
+          };
+          return Theme(
+            data: _theme(dark ? Brightness.dark : Brightness.light, locale),
+            // A clear ring around what a remote or the keyboard chose.
+            child: FocusRing(
+              atStart: Platform.isAndroid && AndroidCore.isTv,
+              child: child!,
+            ),
+          );
+        },
+        home: Shell(core: widget.core, settings: widget.settings),
+      ),
     ),
   );
 }
+
+/// Whether this run is a Dart VM test. `flutter test` sets
+/// FLUTTER_TEST=true; a plain `dart test` does not.
+const bool _dartVmTest =
+    bool.fromEnvironment('dart.vm.product') == false && _inTest;
+
+/// Platform.environment is not available in a web build; the test bundle
+/// marks itself with a define instead, and every other build passes false.
+const bool _inTest = bool.fromEnvironment('V2RVPN_TEST');
 
 class Shell extends StatefulWidget {
   const Shell({super.key, required this.core, required this.settings});
@@ -375,6 +423,7 @@ class _TrafficPanel extends StatelessWidget {
               title: l.liveTraffic,
               up: formatRate(t?.upRate ?? 0),
               down: formatRate(t?.downRate ?? 0),
+              live: true,
             ),
             const SizedBox(height: 8),
             _TrafficCard(
@@ -394,15 +443,21 @@ class _TrafficCard extends StatelessWidget {
     required this.title,
     required this.up,
     required this.down,
+    this.live = false,
   });
 
   final String title;
   final String up;
   final String down;
 
+  /// Whether the speed is the live one: its rings dance with the beat, one
+  /// around the up arrow and one around the down.
+  final bool live;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final dance = DanceScope.of(context);
     final value = theme.textTheme.bodySmall?.copyWith(
       fontFeatures: const [FontFeature.tabularFigures()],
     );
@@ -413,24 +468,108 @@ class _TrafficCard extends StatelessWidget {
         Text(text, style: value),
       ],
     );
-    return Container(
+    Widget content() => Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title, style: theme.textTheme.labelMedium),
+        const SizedBox(height: 4),
+        live && dance.on
+            ? _DancedLine(
+                tick: dance.clock.tick,
+                shape: dance.shape,
+                color: ringColor(live: true, tick: dance.clock.tick),
+                icon: Icons.arrow_upward_rounded,
+                text: up,
+                style: value,
+              )
+            : line(Icons.arrow_upward_rounded, StatusColors.good, up),
+        live && dance.on
+            ? _DancedLine(
+                tick: dance.clock.tick,
+                shape: dance.shape,
+                color: ringColor(live: true, tick: dance.clock.tick),
+                icon: Icons.arrow_downward_rounded,
+                text: down,
+                style: value,
+              )
+            : line(
+                Icons.arrow_downward_rounded,
+                theme.colorScheme.primary,
+                down,
+              ),
+      ],
+    );
+    final card = Container(
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: theme.textTheme.labelMedium),
-          const SizedBox(height: 4),
-          line(Icons.arrow_upward_rounded, StatusColors.good, up),
-          line(Icons.arrow_downward_rounded, theme.colorScheme.primary, down),
-        ],
+      child: content(),
+    );
+    if (!live || !dance.on) return card;
+    // The live traffic card has the dance's ring around it, changing color
+    // with the speed it shows.
+    return ListenableBuilder(
+      listenable: dance.clock,
+      builder: (context, _) => DanceRingBox(
+        pad: 5,
+        ring: DanceRing(
+          radius: 0,
+          stroke: 1.8,
+          tick: dance.clock.tick,
+          color: ringColor(live: true, tick: dance.clock.tick),
+          phase: (dance.clock.tick % 3) / 3,
+          spokes: dance.shape.spokes,
+        ),
+        child: card,
       ),
     );
   }
+}
+
+/// One line of the live traffic card with a small dancing ring around its
+/// arrow, so the download and the upload each pulse too.
+class _DancedLine extends StatelessWidget {
+  const _DancedLine({
+    required this.tick,
+    required this.shape,
+    required this.color,
+    required this.icon,
+    required this.text,
+    this.style,
+  });
+
+  final int tick;
+  final DanceShape shape;
+  final Color color;
+  final IconData icon;
+  final String text;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context) => Row(
+    children: [
+      SizedBox.square(
+        dimension: 22,
+        child: DanceRingBox(
+          pad: 3,
+          ring: DanceRing(
+            radius: 0,
+            stroke: 1.3,
+            tick: tick,
+            color: color,
+            phase: (tick % 3) / 3,
+            spokes: shape.spokes,
+          ),
+          child: Center(child: Icon(icon, size: 12, color: color)),
+        ),
+      ),
+      const Spacer(),
+      Text(text, style: style),
+    ],
+  );
 }
 
 class _LostBanner extends StatelessWidget {

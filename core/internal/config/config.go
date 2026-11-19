@@ -781,14 +781,14 @@ const DataDirName = "user-data"
 // (inside the macOS bundle). A core started from either place uses the
 // app's data folder, so it sees the app's accounts and settings.
 const (
-	AppFolder      = "Arman VPN"
+	AppFolder      = "V2RVPN"
 	PortableMarker = "portable"
 	CoreFolder     = "core"
 )
 
 // appExecutables are the desktop app's executables: Windows, Linux, and
-// macOS (inside Arman VPN.app/Contents/MacOS).
-var appExecutables = []string{"arman-vpn.exe", "arman-vpn", "Arman VPN"}
+// macOS (inside V2RVPN.app/Contents/MacOS).
+var appExecutables = []string{"arman-vpn.exe", "arman-vpn", "V2RVPN"}
 
 // DefaultDataDir returns the data folder: DataDirName next to the running
 // executable (symlinks resolved, so a linked binary still uses its real

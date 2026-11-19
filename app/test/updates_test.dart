@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:arman_vpn/app_info.dart';
-import 'package:arman_vpn/core/updates.dart';
+import 'package:v2rvpn/app_info.dart';
+import 'package:v2rvpn/core/updates.dart';
 
 /// A release server on loopback in GitHub's place: [routes] maps
 /// "METHOD /path" to a status and a body; anything else is 404.
@@ -28,11 +28,11 @@ void main() {
   test('a phone downloads the APK for its processor', () {
     expect(
       apkUrl(page, 'arm64-v8a'),
-      'https://github.com/o/r/releases/download/v1.2.3/Arman-VPN-1.2.3-Android-arm64-v8a.apk',
+      'https://github.com/o/r/releases/download/v1.2.3/V2RVPN-1.2.3-Android-arm64-v8a.apk',
     );
     expect(
       apkUrl(page, 'armeabi-v7a'),
-      endsWith('/v1.2.3/Arman-VPN-1.2.3-Android-armeabi-v7a.apk'),
+      endsWith('/v1.2.3/V2RVPN-1.2.3-Android-armeabi-v7a.apk'),
     );
     expect(apkUrl(page, 'x86_64'), endsWith('-x86_64.apk'));
   });
@@ -40,22 +40,19 @@ void main() {
   test('another processor gets the universal APK', () {
     expect(
       apkUrl(page, 'x86'),
-      endsWith('/Arman-VPN-1.2.3-Android-universal.apk'),
+      endsWith('/V2RVPN-1.2.3-Android-universal.apk'),
     );
-    expect(
-      apkUrl(page, ''),
-      endsWith('/Arman-VPN-1.2.3-Android-universal.apk'),
-    );
+    expect(apkUrl(page, ''), endsWith('/V2RVPN-1.2.3-Android-universal.apk'));
   });
 
   test('a computer downloads the file for its kind of copy', () {
     expect(
       releaseFileUrl(page, windowsName(installed: true)),
-      'https://github.com/o/r/releases/download/v1.2.3/Arman-VPN-1.2.3-Windows-Setup-x64.exe',
+      'https://github.com/o/r/releases/download/v1.2.3/V2RVPN-1.2.3-Windows-Setup-x64.exe',
     );
     expect(
       releaseFileUrl(page, windowsName(installed: false)),
-      endsWith('/Arman-VPN-1.2.3-Windows-x64.zip'),
+      endsWith('/V2RVPN-1.2.3-Windows-x64.zip'),
     );
     expect(linuxName('3.10.0 (stable) on "linux_arm64"'), 'Linux-arm64.tar.gz');
     expect(linuxName('3.10.0 (stable) on "linux_x64"'), 'Linux-amd64.tar.gz');
@@ -72,12 +69,14 @@ void main() {
       final url = await serve({
         'GET /updates.json': (200, updates),
         // GitHub sends a published release's file on to its storage.
-        'HEAD /releases/download/v1.0.6/Arman-VPN-1.0.6-Windows-x64.zip': (
+        'HEAD /releases/download/v1.0.6/V2RVPN-1.0.6-Windows-x64.zip': (
           302,
           '',
         ),
-        'HEAD /releases/download/v1.0.4/Arman-VPN-1.0.4-Android-universal.apk':
-            (302, ''),
+        'HEAD /releases/download/v1.0.4/V2RVPN-1.0.4-Android-universal.apk': (
+          302,
+          '',
+        ),
       });
       final release = await checkForUpdate(
         server: url,
@@ -123,7 +122,7 @@ void main() {
         final mirrorRequests = <String>[];
         final primary = await serve({
           'GET /updates.json': response,
-          'HEAD /releases/download/v1.0.6/Arman-VPN-1.0.6-Windows-x64.zip': (
+          'HEAD /releases/download/v1.0.6/V2RVPN-1.0.6-Windows-x64.zip': (
             302,
             '',
           ),
@@ -141,7 +140,7 @@ void main() {
         expect(release?.url, '$primary/releases/tag/v1.0.6');
         expect(primaryRequests, [
           'GET /updates.json',
-          'HEAD /releases/download/v1.0.6/Arman-VPN-1.0.6-Windows-x64.zip',
+          'HEAD /releases/download/v1.0.6/V2RVPN-1.0.6-Windows-x64.zip',
         ]);
         expect(mirrorRequests, ['GET /updates.json']);
       }

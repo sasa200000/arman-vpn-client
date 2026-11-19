@@ -10,7 +10,7 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'Tổng quan';
@@ -1609,7 +1609,7 @@ class AppLocalizationsVi extends AppLocalizations {
       'Dịch vụ TUN mới hơn ứng dụng này. Hãy cập nhật ứng dụng để dùng chế độ TUN.';
 
   @override
-  String get tunBusy => 'Một bản Arman VPN khác đang dùng chế độ TUN.';
+  String get tunBusy => 'Một bản V2RVPN khác đang dùng chế độ TUN.';
 
   @override
   String get tunNoDriver =>
@@ -1635,11 +1635,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get tunServiceRemoved => 'Đã gỡ dịch vụ TUN.';
 
   @override
-  String get tunInstallPrompt =>
-      'Arman VPN muốn cài đặt dịch vụ cho chế độ TUN.';
+  String get tunInstallPrompt => 'V2RVPN muốn cài đặt dịch vụ cho chế độ TUN.';
 
   @override
-  String get tunRemovePrompt => 'Arman VPN muốn gỡ dịch vụ của chế độ TUN.';
+  String get tunRemovePrompt => 'V2RVPN muốn gỡ dịch vụ của chế độ TUN.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1781,4 +1780,43 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get relayTestInterrupted =>
       'Kiểm tra kết thúc trước khi nhận được kết quả đầy đủ.';
+
+  @override
+  String get sectionLightDance => 'Khiêu vũ ánh sáng';
+
+  @override
+  String get danceShape => 'Hình vòng tròn';
+
+  @override
+  String get danceShapeChase => 'Truy đuổi';
+
+  @override
+  String get danceShapeTriple => 'Bộ ba';
+
+  @override
+  String get danceShapeDuet => 'Song ca';
+
+  @override
+  String get danceShapeComet => 'Sao chổi';
+
+  @override
+  String get danceShapeStars => 'Sao';
+
+  @override
+  String get danceSpeed => 'Tốc độ nhịp';
+
+  @override
+  String get danceSpeed1 => 'Chậm';
+
+  @override
+  String get danceSpeed2 => 'Mặc định';
+
+  @override
+  String get danceSpeed3 => 'Nhanh';
+
+  @override
+  String get danceSpeed4 => 'Rất nhanh';
+
+  @override
+  String get showLiveWave => 'Sóng trực tiếp';
 }

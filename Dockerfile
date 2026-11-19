@@ -1,4 +1,4 @@
-# Headless Arman VPN: the Linux core (SOCKS5 and HTTP proxy, and the web
+# Headless V2RVPN: the Linux core (SOCKS5 and HTTP proxy, and the web
 # panel). The version baked into the binary is app/pubspec.yaml, the same
 # "major.minor.patch" a release tag vX.Y.Z must name.
 
@@ -74,8 +74,8 @@ RUN chmod 755 /usr/local/bin/arman-vpn-core /usr/local/bin/docker-entrypoint
 VOLUME ["/var/lib/arman-vpn"]
 EXPOSE 10820/tcp 10810/tcp 10810/udp
 
-LABEL org.opencontainers.image.title="Arman VPN" \
-      org.opencontainers.image.description="Headless Arman VPN core: a SOCKS5 and HTTP proxy and the web panel" \
+LABEL org.opencontainers.image.title="V2RVPN" \
+      org.opencontainers.image.description="Headless V2RVPN core: a SOCKS5 and HTTP proxy and the web panel" \
       org.opencontainers.image.licenses="GPL-3.0-only" \
       org.opencontainers.image.source="${SOURCE}" \
       org.opencontainers.image.version="${VERSION}" \

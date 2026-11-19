@@ -10,7 +10,7 @@ class AppLocalizationsBn extends AppLocalizations {
   AppLocalizationsBn([String locale = 'bn']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'সারসংক্ষেপ';
@@ -1606,7 +1606,7 @@ class AppLocalizationsBn extends AppLocalizations {
       'TUN সার্ভিস এই অ্যাপের চেয়ে নতুন। TUN মোড ব্যবহার করতে অ্যাপটি আপডেট করুন।';
 
   @override
-  String get tunBusy => 'Arman VPN-এর অন্য একটি কপি TUN মোড ব্যবহার করছে।';
+  String get tunBusy => 'V2RVPN-এর অন্য একটি কপি TUN মোড ব্যবহার করছে।';
 
   @override
   String get tunNoDriver =>
@@ -1633,10 +1633,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Arman VPN TUN মোডের জন্য সার্ভিসটি ইনস্টল করতে চায়।';
+      'V2RVPN TUN মোডের জন্য সার্ভিসটি ইনস্টল করতে চায়।';
 
   @override
-  String get tunRemovePrompt => 'Arman VPN TUN মোডের সার্ভিসটি সরাতে চায়।';
+  String get tunRemovePrompt => 'V2RVPN TUN মোডের সার্ভিসটি সরাতে চায়।';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1776,4 +1776,43 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get relayTestInterrupted =>
       'সম্পূর্ণ ফলাফল পাওয়ার আগে পরীক্ষা শেষ হয়েছে।';
+
+  @override
+  String get sectionLightDance => 'আলোর নাচ';
+
+  @override
+  String get danceShape => 'রিংয়ের আকৃতি';
+
+  @override
+  String get danceShapeChase => 'তাড়া';
+
+  @override
+  String get danceShapeTriple => 'ত্রিত';
+
+  @override
+  String get danceShapeDuet => 'দ্বৈত';
+
+  @override
+  String get danceShapeComet => 'ধূমকেতু';
+
+  @override
+  String get danceShapeStars => 'তারা';
+
+  @override
+  String get danceSpeed => 'ছন্দের গতি';
+
+  @override
+  String get danceSpeed1 => 'ধীর';
+
+  @override
+  String get danceSpeed2 => 'স্বাভাবিক';
+
+  @override
+  String get danceSpeed3 => 'দ্রুত';
+
+  @override
+  String get danceSpeed4 => 'খুব দ্রুত';
+
+  @override
+  String get showLiveWave => 'লাইভ ওয়েভ';
 }

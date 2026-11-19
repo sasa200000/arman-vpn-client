@@ -11,7 +11,7 @@ also need the browser sign-in.
 
 ## 1. Sign in with the browser in an app
 
-1. Install the Arman VPN app on Windows, macOS, or Android
+1. Install the V2RVPN app on Windows, macOS, or Android
    ([downloads](https://github.com/armanlife/arman-vpn-client#downloads)).
 2. Open **Accounts** and change **Sign-in method** from the default,
    **Sign in directly**, to **Sign in with the browser**.
@@ -35,8 +35,8 @@ folder under `accounts` in the data folder:
 
 | System | Data folder |
 | --- | --- |
-| Windows | `user-data` next to the app, usually `%LOCALAPPDATA%\Programs\Arman VPN\user-data` (installs from before the rename: `...\Firefox VPN Client\user-data`); a portable copy keeps it next to its exe |
-| macOS | `~/Library/Application Support/Arman VPN` |
+| Windows | `user-data` next to the app, usually `%LOCALAPPDATA%\Programs\V2RVPN\user-data` (installs from before the rename: `...\Firefox VPN Client\user-data`); a portable copy keeps it next to its exe |
+| macOS | `~/Library/Application Support/V2RVPN` |
 | Linux | `~/.local/share/arman-vpn`, or `$XDG_DATA_HOME/arman-vpn`; a service started with `-data-dir` uses that folder |
 | Docker | `/var/lib/arman-vpn` in the volume (`docker stop` before copying files in) |
 

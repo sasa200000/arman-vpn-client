@@ -92,7 +92,7 @@ type appPackage struct {
 
 // windowsPackage is the Windows app's zip.
 var windowsPackage = appPackage{
-	name:   func(v string) string { return "Arman-VPN-" + v + "-Windows-x64.zip" },
+	name:   func(v string) string { return "V2RVPN-" + v + "-Windows-x64.zip" },
 	app:    "arman-vpn.exe",
 	core:   "core/arman-vpn-core.exe",
 	unpack: unzip,

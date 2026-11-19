@@ -14,7 +14,7 @@ class MainFlutterWindow: NSWindow {
     project.dartEntrypointArguments = Array(CommandLine.arguments.dropFirst())
     let flutterViewController = FlutterViewController(project: project)
     self.contentViewController = flutterViewController
-    self.title = "Arman VPN"
+    self.title = "V2RVPN"
     self.setContentSize(NSSize(width: 820, height: 680))
     // The smallest window the pages are laid out for.
     self.contentMinSize = NSSize(width: 400, height: 480)

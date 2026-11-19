@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "appTitle": "Arman VPN",
+  "appTitle": "V2RVPN",
   "navOverview": "Overview",
   "navAccounts": "Accounts",
   "navSettings": "Settings",
@@ -969,7 +969,7 @@
   "tunMissing": "The TUN service isn't installed.",
   "tunOutdated": "The TUN service is older than this app. Install it again to use TUN mode.",
   "tunAppOutdated": "The TUN service is newer than this app. Update the app to use TUN mode.",
-  "tunBusy": "Another copy of Arman VPN is using TUN mode.",
+  "tunBusy": "Another copy of V2RVPN is using TUN mode.",
   "tunNoDriver": "The system's TUN driver isn't available. Restart the computer and try again.",
   "tunInstall": "Install",
   "tunInstallAgain": "Install again",
@@ -977,11 +977,11 @@
   "removeTunService": "Remove the TUN service",
   "removeTunServiceHint": "Removes the system service that TUN mode uses. Choosing TUN again installs it again.",
   "tunServiceRemoved": "The TUN service was removed.",
-  "tunInstallPrompt": "Arman VPN wants to install the service for TUN mode.",
+  "tunInstallPrompt": "V2RVPN wants to install the service for TUN mode.",
   "@tunInstallPrompt": {
     "description": "macOS: the reason its administrator password prompt shows when the app installs the TUN mode's service."
   },
-  "tunRemovePrompt": "Arman VPN wants to remove the service for TUN mode.",
+  "tunRemovePrompt": "V2RVPN wants to remove the service for TUN mode.",
   "@tunRemovePrompt": {
     "description": "macOS: the reason its administrator password prompt shows when the app removes the TUN mode's service while the service does not run."
   },
@@ -1071,5 +1071,31 @@
   "relayTestPassed": "Relay is ready",
   "relayTestFailed": "Relay health could not be confirmed",
   "relayTestCopy": "Copy report",
-  "relayTestInterrupted": "The test ended before a complete result was received."
+  "relayTestInterrupted": "The test ended before a complete result was received.",
+  "sectionLightDance": "Light dance",
+  "@sectionLightDance": {"description": "The panel in Settings > General that holds the app's neon rings: the switch, the shape, the speed, and the wave."},
+  "danceShape": "Ring shape",
+  "@danceShape": {"description": "Which shape the rings around the controls take."},
+  "danceShapeChase": "Chase",
+  "@danceShapeChase": {"description": "One light chasing itself around the control."},
+  "danceShapeTriple": "Triple",
+  "@danceShapeTriple": {"description": "Three lights evenly apart, turning together."},
+  "danceShapeDuet": "Duet",
+  "@danceShapeDuet": {"description": "Two lights opposite each other, meeting and parting."},
+  "danceShapeComet": "Comet",
+  "@danceShapeComet": {"description": "A bright head with a long tail behind it."},
+  "danceShapeStars": "Stars",
+  "@danceShapeStars": {"description": "Short bright dashes all around, blinking in step."},
+  "danceSpeed": "Beat speed",
+  "@danceSpeed": {"description": "How many beats a second the rings change color."},
+  "danceSpeed1": "Slow",
+  "@danceSpeed1": {"description": "One beat a second: a color a second."},
+  "danceSpeed2": "Normal",
+  "@danceSpeed2": {"description": "Two beats a second."},
+  "danceSpeed3": "Fast",
+  "@danceSpeed3": {"description": "Three beats a second."},
+  "danceSpeed4": "Very fast",
+  "@danceSpeed4": {"description": "Four beats a second."},
+  "showLiveWave": "Live wave",
+  "@showLiveWave": {"description": "The traffic as a sea on the home page, while connected."}
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs or updates Arman VPN from the newest release on GitHub:
+# Installs or updates V2RVPN from the newest release on GitHub:
 #
 #   curl -fsSL https://raw.githubusercontent.com/armanlife/arman-vpn-client/main/install.sh | bash
 #
@@ -9,7 +9,7 @@
 #   - Linux without a graphical session, or run as root: the core alone as
 #     a systemd service with the web dashboard (it asks sudo for that);
 #   - a Linux SSH session could be either, so it asks;
-#   - when Arman VPN is already installed, it asks: update (the default)
+#   - when V2RVPN is already installed, it asks: update (the default)
 #     or remove, and on remove whether to delete the accounts too.
 # Questions are read from the terminal; without one (automation) the
 # default answer is taken, so a rerun updates. Accounts and settings stay.
@@ -66,14 +66,14 @@ AUTOSTART_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/autostart/arman-vpn.desktop"
 APP_DATA="$DATA_HOME/arman-vpn"
 
 # The macOS app's.
-MAC_APP="Arman VPN.app"
+MAC_APP="V2RVPN.app"
 MAC_AGENT="$HOME/Library/LaunchAgents/com.arman.firefoxvpn.plist"
-MAC_DATA="$HOME/Library/Application Support/Arman VPN"
+MAC_DATA="$HOME/Library/Application Support/V2RVPN"
 
 # The TUN mode's service, which the app installs for the whole computer the
 # first time the mode is chosen (core/cmd/arman-vpn-tun).
 TUN_LINUX="/opt/arman-vpn-tun/arman-vpn-tun"
-TUN_MAC="/Library/Application Support/Arman VPN TUN/arman-vpn-tun"
+TUN_MAC="/Library/Application Support/V2RVPN TUN/arman-vpn-tun"
 
 # The same before 1.0.9 (LEGACY_NAME): an install or an update moves them
 # to the new names, a removal removes them.
@@ -106,7 +106,7 @@ esac
 rule() { local i; for ((i = 0; i < $1; i++)); do printf '%s' "$LINE"; done; }
 
 banner() {
-  printf '\n  %s%sArman VPN%s %sinstaller%s\n' "$BOLD" "$FOX" "$OFF" "$DIM" "$OFF"
+  printf '\n  %s%sV2RVPN%s %sinstaller%s\n' "$BOLD" "$FOX" "$OFF" "$DIM" "$OFF"
   printf '  %s%s%s\n' "$DIM" "$(rule 34)" "$OFF"
   field "System" "$(os_name)"
   field "Processor" "$(processor_name)"
@@ -369,7 +369,7 @@ install_server() {
   ok "the service runs, and starts with the server"
 
   if [ "$fresh" = 0 ]; then
-    printf '\n  %s%s Arman VPN is updated and running.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
+    printf '\n  %s%s V2RVPN is updated and running.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
     log "The panel and the proxy keep their addresses and logins."
     command_menu
     return
@@ -393,7 +393,7 @@ install_server() {
   ok "each behind its own login"
   [ "$lan" != "$wan" ] || lan=""
 
-  printf '\n  %s%s Arman VPN is installed and running.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
+  printf '\n  %s%s V2RVPN is installed and running.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
   printf '  %s%s%s\n' "$DIM" "$(rule 58)" "$OFF"
   section "Proxy ${DIM}(SOCKS5 and HTTP)${OFF}"
   [ -z "$lan" ] || field "Local" "$lan:$proxy_port" "$CYAN"
@@ -416,7 +416,7 @@ install_server() {
 # command_menu: what the arman-vpn command does on this server.
 command_menu() {
   local width=58
-  section "Arman VPN commands"
+  section "V2RVPN commands"
   printf '  %s%s%s\n' "$DIM" "$(rule $width)" "$OFF"
   # In the groups of the arman-vpn menu, a rule between them.
   menu_line "arman-vpn" "The menu: pick a command by its number"
@@ -503,10 +503,10 @@ linux_system_parts() {
 install_linux_app() {
   local file
   [ "$(arch)" != armv7 ] || die "the app has no 32-bit ARM build; install the service: curl -fsSL $RAW | bash -s -- server"
-  file="Arman-VPN-Linux-$(arch).tar.gz"
+  file="V2RVPN-Linux-$(arch).tar.gz"
   download "$file"
   tar -xzf "$tmp/$file" -C "$tmp"
-  [ -f "$tmp/arman-vpn/arman-vpn" ] || die "not an Arman VPN archive"
+  [ -f "$tmp/arman-vpn/arman-vpn" ] || die "not an V2RVPN archive"
   chmod 0755 "$tmp/arman-vpn/arman-vpn" "$tmp/arman-vpn/core/arman-vpn-core"
   if [ -f "$tmp/arman-vpn/core/arman-vpn-tun" ]; then chmod 0755 "$tmp/arman-vpn/core/arman-vpn-tun"; fi
 
@@ -521,7 +521,7 @@ install_linux_app() {
   rm -rf "$LEGACY_APP_DIR" "$LEGACY_APP_DIR.old"
   if [ -f "$LEGACY_AUTOSTART" ]; then
     sed -e "s|$LEGACY_APP_EXE|$APP_DIR/arman-vpn|g" -e "s|$LEGACY_APP_DIR/|$APP_DIR/|g" \
-      -e "s|^Name=$LEGACY_NAME\$|Name=Arman VPN|" "$LEGACY_AUTOSTART" >"$AUTOSTART_FILE"
+      -e "s|^Name=$LEGACY_NAME\$|Name=V2RVPN|" "$LEGACY_AUTOSTART" >"$AUTOSTART_FILE"
     rm -f "$LEGACY_AUTOSTART"
   fi
 
@@ -529,7 +529,7 @@ install_linux_app() {
   cat >"$DESKTOP_FILE" <<EOF
 [Desktop Entry]
 Type=Application
-Name=Arman VPN
+Name=V2RVPN
 Comment=Free VPN through Mozilla's servers
 Exec="$APP_DIR/arman-vpn"
 Icon=$APP_DIR/data/app_icon.png
@@ -543,9 +543,9 @@ EOF
 
   ok "installed in $APP_DIR"
   linux_system_parts
-  printf '\n  %s%s Arman VPN is installed.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
+  printf '\n  %s%s V2RVPN is installed.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
   section "Open it"
-  field "Menu" "Arman VPN in the applications menu"
+  field "Menu" "V2RVPN in the applications menu"
   field "Command" "$APP_DIR/arman-vpn" "$CYAN"
   field "Update" "run the same install command again (it also removes)"
   printf '\n'
@@ -555,32 +555,32 @@ EOF
 # writable). Downloaded this way it carries no quarantine flag, so macOS
 # opens it without asking.
 install_mac_app() {
-  local file="Arman-VPN-macOS.dmg" dest=/Applications
+  local file="V2RVPN-macOS.dmg" dest=/Applications
   [ -w "$dest" ] || dest="$HOME/Applications"
   mkdir -p "$dest"
   download "$file"
   mkdir "$tmp/mnt"
   hdiutil attach -nobrowse -readonly -quiet -mountpoint "$tmp/mnt" "$tmp/$file" || die "could not open $file"
   mounted="$tmp/mnt"
-  [ -d "$tmp/mnt/$MAC_APP" ] || die "not an Arman VPN disk image"
+  [ -d "$tmp/mnt/$MAC_APP" ] || die "not an V2RVPN disk image"
   # A running copy quits first, so the new one replaces it; so does the
   # app under its name before 1.0.9, which an update may have kept.
-  osascript -e 'quit app "Arman VPN"' >/dev/null 2>&1 || true
+  osascript -e 'quit app "V2RVPN"' >/dev/null 2>&1 || true
   osascript -e "quit app \"$LEGACY_NAME\"" >/dev/null 2>&1 || true
   rm -rf "$dest/$MAC_APP" "$dest/$LEGACY_MAC_APP"
   ditto "$tmp/mnt/$MAC_APP" "$dest/$MAC_APP"
   # The app's LaunchAgent (starting it at sign-in) starts the new one until
   # the app writes it again.
   if [ -f "$MAC_AGENT" ]; then
-    sed -i '' -e "s|$dest/$LEGACY_MAC_APP/Contents/MacOS/$LEGACY_NAME|$dest/$MAC_APP/Contents/MacOS/Arman VPN|g" \
+    sed -i '' -e "s|$dest/$LEGACY_MAC_APP/Contents/MacOS/$LEGACY_NAME|$dest/$MAC_APP/Contents/MacOS/V2RVPN|g" \
       -e "s|$dest/$LEGACY_MAC_APP/|$dest/$MAC_APP/|g" "$MAC_AGENT" || true
   fi
   hdiutil detach -quiet "$tmp/mnt" || true
   mounted=""
   ok "installed in $dest/$MAC_APP"
-  printf '\n  %s%s Arman VPN is installed.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
+  printf '\n  %s%s V2RVPN is installed.%s\n' "$GREEN$BOLD" "$TICK" "$OFF"
   section "Open it"
-  field "Launchpad" "Arman VPN in Launchpad or Applications"
+  field "Launchpad" "V2RVPN in Launchpad or Applications"
   field "Command" "open \"$dest/$MAC_APP\"" "$CYAN"
   field "Update" "run the same install command again (it also removes)"
   printf '\n'
@@ -611,7 +611,7 @@ remove_desktop() {
     fi
   fi
   if [ "$OS" = "Darwin" ]; then
-    osascript -e 'quit app "Arman VPN"' >/dev/null 2>&1 || true
+    osascript -e 'quit app "V2RVPN"' >/dev/null 2>&1 || true
     osascript -e "quit app \"$LEGACY_NAME\"" >/dev/null 2>&1 || true
     rm -rf "/Applications/$MAC_APP" "$HOME/Applications/$MAC_APP" \
       "/Applications/$LEGACY_MAC_APP" "$HOME/Applications/$LEGACY_MAC_APP"
@@ -653,7 +653,7 @@ detect() {
 }
 
 # auto: with no argument, find what to do: install what the machine needs,
-# or, when Arman VPN is already there, update it or remove it.
+# or, when V2RVPN is already there, update it or remove it.
 auto() {
   local n installed=1
   # A Linux machine without a graphical session gets the service, which
@@ -662,7 +662,7 @@ auto() {
     need_root
   fi
   if has_app && has_service; then
-    n="$(choose 1 "Arman VPN is installed both as the app and as the service. Which one?"       "the app" "the service with the web panel")"
+    n="$(choose 1 "V2RVPN is installed both as the app and as the service. Which one?"       "the app" "the service with the web panel")"
     if [ "$n" = 1 ]; then KIND=desktop; else KIND=server; fi
   elif has_app; then
     KIND=desktop
@@ -685,7 +685,7 @@ auto() {
   if [ "$installed" = 1 ]; then
     local what="the app"
     [ "$KIND" = desktop ] || what="the service"
-    n="$(choose 1 "Arman VPN ($what) is already installed." "update to the newest version" "remove it")"
+    n="$(choose 1 "V2RVPN ($what) is already installed." "update to the newest version" "remove it")"
     if [ "$n" = 2 ]; then
       n="$(choose 1 "Delete its accounts and settings too?" "no, keep them" "yes, delete them")"
       [ "$n" = 1 ] || PURGE=1

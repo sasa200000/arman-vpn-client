@@ -21,8 +21,8 @@ func intro(out io.Writer, color bool) {
 		return code
 	}
 	bold, dim, orange, cyan, off := c("\x1b[1m"), c("\x1b[2m"), c("\x1b[38;5;208m"), c("\x1b[36m"), c("\x1b[0m")
-	fmt.Fprintf(out, "\n  %s%s◆ Arman VPN · TUN service%s  %s%s%s\n", bold, orange, off, dim, version.Current, off)
+	fmt.Fprintf(out, "\n  %s%s◆ V2RVPN · TUN service%s  %s%s%s\n", bold, orange, off, dim, version.Current, off)
 	fmt.Fprintf(out, "  %s──────────────────────────────────────────────────%s\n", dim, off)
-	fmt.Fprintf(out, "  %sTUN mode%s service for Arman VPN.\n", bold, off)
+	fmt.Fprintf(out, "  %sTUN mode%s service for V2RVPN.\n", bold, off)
 	fmt.Fprintf(out, "\n  %s%s%s\n\n", cyan, projectURL, off)
 }

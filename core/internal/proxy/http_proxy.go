@@ -51,7 +51,7 @@ func (s *SOCKSServer) serveHTTP(client *bufferedConn, clientAddr string, start t
 	}
 	if s.Auth != nil && !s.Auth.matchBasic(req.Header.Get("Proxy-Authorization")) {
 		logx.Warn("HTTP proxy client rejected: %s client=%s", errSOCKSAuth, clientAddr)
-		writeHTTPError(client, http.StatusProxyAuthRequired, "The proxy needs the username and password set in Settings.", `Basic realm="Arman VPN"`)
+		writeHTTPError(client, http.StatusProxyAuthRequired, "The proxy needs the username and password set in Settings.", `Basic realm="V2RVPN"`)
 		return
 	}
 	if s.handshakeTimeout > 0 {

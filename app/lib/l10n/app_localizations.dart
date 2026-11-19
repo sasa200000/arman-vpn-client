@@ -126,7 +126,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'Arman VPN'**
+  /// **'V2RVPN'**
   String get appTitle;
 
   /// No description provided for @navOverview.
@@ -2826,7 +2826,7 @@ abstract class AppLocalizations {
   /// No description provided for @tunBusy.
   ///
   /// In en, this message translates to:
-  /// **'Another copy of Arman VPN is using TUN mode.'**
+  /// **'Another copy of V2RVPN is using TUN mode.'**
   String get tunBusy;
 
   /// No description provided for @tunNoDriver.
@@ -2874,13 +2874,13 @@ abstract class AppLocalizations {
   /// macOS: the reason its administrator password prompt shows when the app installs the TUN mode's service.
   ///
   /// In en, this message translates to:
-  /// **'Arman VPN wants to install the service for TUN mode.'**
+  /// **'V2RVPN wants to install the service for TUN mode.'**
   String get tunInstallPrompt;
 
   /// macOS: the reason its administrator password prompt shows when the app removes the TUN mode's service while the service does not run.
   ///
   /// In en, this message translates to:
-  /// **'Arman VPN wants to remove the service for TUN mode.'**
+  /// **'V2RVPN wants to remove the service for TUN mode.'**
   String get tunRemovePrompt;
 
   /// No description provided for @tunRemoveFailed.
@@ -3140,6 +3140,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The test ended before a complete result was received.'**
   String get relayTestInterrupted;
+
+  /// The panel in Settings > General that holds the app's neon rings: the switch, the shape, the speed, and the wave.
+  ///
+  /// In en, this message translates to:
+  /// **'Light dance'**
+  String get sectionLightDance;
+
+  /// Which shape the rings around the controls take.
+  ///
+  /// In en, this message translates to:
+  /// **'Ring shape'**
+  String get danceShape;
+
+  /// One light chasing itself around the control.
+  ///
+  /// In en, this message translates to:
+  /// **'Chase'**
+  String get danceShapeChase;
+
+  /// Three lights evenly apart, turning together.
+  ///
+  /// In en, this message translates to:
+  /// **'Triple'**
+  String get danceShapeTriple;
+
+  /// Two lights opposite each other, meeting and parting.
+  ///
+  /// In en, this message translates to:
+  /// **'Duet'**
+  String get danceShapeDuet;
+
+  /// A bright head with a long tail behind it.
+  ///
+  /// In en, this message translates to:
+  /// **'Comet'**
+  String get danceShapeComet;
+
+  /// Short bright dashes all around, blinking in step.
+  ///
+  /// In en, this message translates to:
+  /// **'Stars'**
+  String get danceShapeStars;
+
+  /// How many beats a second the rings change color.
+  ///
+  /// In en, this message translates to:
+  /// **'Beat speed'**
+  String get danceSpeed;
+
+  /// One beat a second: a color a second.
+  ///
+  /// In en, this message translates to:
+  /// **'Slow'**
+  String get danceSpeed1;
+
+  /// Two beats a second.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get danceSpeed2;
+
+  /// Three beats a second.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast'**
+  String get danceSpeed3;
+
+  /// Four beats a second.
+  ///
+  /// In en, this message translates to:
+  /// **'Very fast'**
+  String get danceSpeed4;
+
+  /// The traffic as a sea on the home page, while connected.
+  ///
+  /// In en, this message translates to:
+  /// **'Live wave'**
+  String get showLiveWave;
 }
 
 class _AppLocalizationsDelegate

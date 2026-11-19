@@ -4,24 +4,24 @@ import 'dart:convert';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:arman_vpn/app_info.dart';
-import 'package:arman_vpn/app_settings.dart';
-import 'package:arman_vpn/core/core_api.dart';
-import 'package:arman_vpn/core/core_controller.dart';
-import 'package:arman_vpn/ui/overview_page.dart' show debugContourPaints;
-import 'package:arman_vpn/core/models.dart';
-import 'package:arman_vpn/core/relay_test.dart';
-import 'package:arman_vpn/core/tun_service.dart';
-import 'package:arman_vpn/core/updates.dart';
-import 'package:arman_vpn/core/announcements.dart';
-import 'package:arman_vpn/core/android_core.dart';
-import 'package:arman_vpn/desktop/close_dialog.dart';
-import 'package:arman_vpn/l10n/app_localizations.dart';
-import 'package:arman_vpn/ui/app.dart';
-import 'package:arman_vpn/ui/settings_page.dart'
+import 'package:v2rvpn/app_info.dart';
+import 'package:v2rvpn/app_settings.dart';
+import 'package:v2rvpn/core/core_api.dart';
+import 'package:v2rvpn/core/core_controller.dart';
+import 'package:v2rvpn/ui/overview_page.dart' show debugContourPaints;
+import 'package:v2rvpn/core/models.dart';
+import 'package:v2rvpn/core/relay_test.dart';
+import 'package:v2rvpn/core/tun_service.dart';
+import 'package:v2rvpn/core/updates.dart';
+import 'package:v2rvpn/core/announcements.dart';
+import 'package:v2rvpn/core/android_core.dart';
+import 'package:v2rvpn/desktop/close_dialog.dart';
+import 'package:v2rvpn/l10n/app_localizations.dart';
+import 'package:v2rvpn/ui/app.dart';
+import 'package:v2rvpn/ui/settings_page.dart'
     show SettingsGroup, pickProgramFile;
-import 'package:arman_vpn/ui/signin_dialog.dart';
-import 'package:arman_vpn/ui/widgets.dart';
+import 'package:v2rvpn/ui/signin_dialog.dart';
+import 'package:v2rvpn/ui/widgets.dart';
 
 Map<String, Object?> _account(
   String id,
@@ -696,7 +696,7 @@ void main() {
     addTearDown(core.dispose);
     const rawError =
         "Mozilla's security check refused this sign-in from here. "
-        'Sign in with the browser in the Arman VPN app instead.';
+        'Sign in with the browser in the V2RVPN app instead.';
     final state = SignInState.fromJson({
       'email': 'me@example.com',
       'step': SignInStep.failed,
@@ -1716,10 +1716,7 @@ void main() {
           }),
         );
         await tester.pumpAndSettle();
-        expect(
-          find.text(l.relayTestFailed),
-          findsOneWidget,
-        );
+        expect(find.text(l.relayTestFailed), findsOneWidget);
         expect(find.textContaining('HTTP 429:'), findsOneWidget);
         final closeButton = find.widgetWithText(FilledButton, l.close);
         final copyLabel = tester.getRect(find.text(l.relayTestCopy));
@@ -3219,19 +3216,19 @@ void main() {
           signatureUrl: 'https://cdn.example/signature',
           downloads: {
             'archive-x64': ReleaseDownload(
-              'Arman-VPN-Windows-x64.zip',
+              'V2RVPN-Windows-x64.zip',
               'https://cdn.example/package',
             ),
             'archive': ReleaseDownload(
-              'Arman-VPN-Windows-x64.zip',
+              'V2RVPN-Windows-x64.zip',
               'https://cdn.example/package',
             ),
             'amd64': ReleaseDownload(
-              'Arman-VPN-Windows-x64.zip',
+              'V2RVPN-Windows-x64.zip',
               'https://cdn.example/package',
             ),
             'arm64': ReleaseDownload(
-              'Arman-VPN-Windows-x64.zip',
+              'V2RVPN-Windows-x64.zip',
               'https://cdn.example/package',
             ),
           },
@@ -3239,7 +3236,7 @@ void main() {
       );
       await tester.pump();
       expect(api.downloadSources.single, {
-        'file': 'Arman-VPN-Windows-x64.zip',
+        'file': 'V2RVPN-Windows-x64.zip',
         'url': 'https://cdn.example/package',
         'checksums_url': 'https://cdn.example/sums',
         'signature_url': 'https://cdn.example/signature',
@@ -3498,7 +3495,7 @@ void main() {
       // The reason macOS' prompt shows, in the app's language.
       expect(
         service.prompt,
-        'Arman VPN wants to install the service for TUN mode.',
+        'V2RVPN wants to install the service for TUN mode.',
       );
       expect(api.mode, 'tun');
       api.tun = {'state': 'on', 'installed': true};
@@ -3571,7 +3568,7 @@ void main() {
       expect(service.removals, 1);
       expect(
         service.prompt,
-        'Arman VPN wants to remove the service for TUN mode.',
+        'V2RVPN wants to remove the service for TUN mode.',
       );
       expect(find.text('The TUN service was removed.'), findsOneWidget);
       expect(api.tun?['installed'], isFalse);
@@ -3808,7 +3805,7 @@ void main() {
           'The TUN service is newer than this app. Update the app to use TUN mode.',
           null,
         ),
-        ('busy', 'Another copy of Arman VPN is using TUN mode.', null),
+        ('busy', 'Another copy of V2RVPN is using TUN mode.', null),
         (
           'no_driver',
           "The system's TUN driver isn't available. Restart the computer and try again.",

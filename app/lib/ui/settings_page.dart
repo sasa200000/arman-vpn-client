@@ -15,7 +15,9 @@ import '../l10n/app_localizations.dart';
 import '../platform.dart';
 import 'bypass_apps_page.dart';
 import 'connection_mode.dart';
+import 'dance.dart';
 import 'format.dart';
+import 'live_wave.dart';
 import 'port_dialog.dart';
 import 'relay_test_dialog.dart';
 import 'widgets.dart';
@@ -163,9 +165,13 @@ List<(SettingsSection, String)> settingsIndex(AppLocalizations l) => [
   (SettingsSection.general, l.autostartShowsWindow),
   (SettingsSection.general, l.closeBehavior),
   (SettingsSection.general, l.connectOnStartup),
+  (SettingsSection.general, l.danceShape),
+  (SettingsSection.general, l.danceSpeed),
   (SettingsSection.general, l.language),
   (SettingsSection.general, l.sectionGeneral),
+  (SettingsSection.general, l.sectionLightDance),
   (SettingsSection.general, l.showAppModeSwitch),
+  (SettingsSection.general, l.showLiveWave),
   (SettingsSection.general, l.showPublicIp),
   (SettingsSection.general, l.speedInNotification),
   (SettingsSection.general, l.startOnBoot),
@@ -488,7 +494,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         sections.any((e) => e.$1 == entry.$1) &&
                         settingOnThisPlatform(l, entry.$2) &&
                         !shown.any(
-                          (g) => g.$2.any((e) => e.$1 == entry.$1 && e.$3 == entry.$2),
+                          (g) => g.$2.any(
+                            (e) => e.$1 == entry.$1 && e.$3 == entry.$2,
+                          ),
                         ))
                       entry,
                 ];
@@ -611,119 +619,215 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
-  Widget _general(AppLocalizations l, AppSettings s) => Panel(
-    title: l.sectionGeneral,
-    icon: Icons.tune_rounded,
-    child: Column(
-      children: [
-        _Choice<String>(
-          icon: Icons.translate_rounded,
-          title: l.language,
-          value: s.language,
-          onChanged: _pickLanguage,
-          options: [
-            ('', l.languageSystem, null),
-            for (final code in AppSettings.supportedLanguages)
-              (code, languageNames[code]!, languageStyle(code)),
-          ],
-        ),
-        _Choice<ThemeMode>(
-          icon: Icons.brightness_6_outlined,
-          title: l.theme,
-          value: s.themeMode,
-          onChanged: (v) => s.update(themeMode: v),
-          options: [
-            (ThemeMode.system, l.themeSystem, null),
-            (ThemeMode.light, l.themeLight, null),
-            (ThemeMode.dark, l.themeDark, null),
-          ],
-        ),
-        if (!Platform.isAndroid)
-          _Choice<CloseAction>(
-            icon: Icons.close_rounded,
-            title: l.closeBehavior,
-            value: s.closeAction,
-            onChanged: (v) => s.update(closeAction: v),
-            options: [
-              (CloseAction.ask, l.closeAsk, null),
-              (CloseAction.tray, l.closeTray, null),
-              (CloseAction.quit, l.closeQuit, null),
-            ],
-          ),
-        _Row(
-          icon: Icons.visibility_outlined,
-          label: l.showPublicIp,
-          child: Switch(
-            value: s.showPublicIp,
-            onChanged: (v) => s.update(showPublicIp: v),
-          ),
-        ),
-        if (Platform.isAndroid)
-          _Row(
-            icon: Icons.apps_rounded,
-            label: l.showAppModeSwitch,
-            child: Switch(
-              value: s.showAppModeSwitch,
-              onChanged: (v) => s.update(showAppModeSwitch: v),
+  Widget _general(AppLocalizations l, AppSettings s) => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      Panel(
+        title: l.sectionGeneral,
+        icon: Icons.tune_rounded,
+        child: Column(
+          children: [
+            _Choice<String>(
+              icon: Icons.translate_rounded,
+              title: l.language,
+              value: s.language,
+              onChanged: _pickLanguage,
+              options: [
+                ('', l.languageSystem, null),
+                for (final code in AppSettings.supportedLanguages)
+                  (code, languageNames[code]!, languageStyle(code)),
+              ],
             ),
-          ),
-        if (Platform.isAndroid)
-          ValueListenableBuilder(
-            valueListenable: AndroidCore.showSpeed,
-            builder: (context, on, _) => _Row(
-              icon: Icons.speed_rounded,
-              label: l.speedInNotification,
+            _Choice<ThemeMode>(
+              icon: Icons.brightness_6_outlined,
+              title: l.theme,
+              value: s.themeMode,
+              onChanged: (v) => s.update(themeMode: v),
+              options: [
+                (ThemeMode.system, l.themeSystem, null),
+                (ThemeMode.light, l.themeLight, null),
+                (ThemeMode.dark, l.themeDark, null),
+              ],
+            ),
+            if (!Platform.isAndroid)
+              _Choice<CloseAction>(
+                icon: Icons.close_rounded,
+                title: l.closeBehavior,
+                value: s.closeAction,
+                onChanged: (v) => s.update(closeAction: v),
+                options: [
+                  (CloseAction.ask, l.closeAsk, null),
+                  (CloseAction.tray, l.closeTray, null),
+                  (CloseAction.quit, l.closeQuit, null),
+                ],
+              ),
+            _Row(
+              icon: Icons.visibility_outlined,
+              label: l.showPublicIp,
               child: Switch(
-                value: on,
-                onChanged: (v) => runShowingErrors(
-                  context,
-                  () => AndroidCore.setShowSpeed(v),
+                value: s.showPublicIp,
+                onChanged: (v) => s.update(showPublicIp: v),
+              ),
+            ),
+            if (Platform.isAndroid)
+              _Row(
+                icon: Icons.apps_rounded,
+                label: l.showAppModeSwitch,
+                child: Switch(
+                  value: s.showAppModeSwitch,
+                  onChanged: (v) => s.update(showAppModeSwitch: v),
                 ),
               ),
-            ),
+            if (Platform.isAndroid)
+              ValueListenableBuilder(
+                valueListenable: AndroidCore.showSpeed,
+                builder: (context, on, _) => _Row(
+                  icon: Icons.speed_rounded,
+                  label: l.speedInNotification,
+                  child: Switch(
+                    value: on,
+                    onChanged: (v) => runShowingErrors(
+                      context,
+                      () => AndroidCore.setShowSpeed(v),
+                    ),
+                  ),
+                ),
+              ),
+            if (Platform.isWindows || Platform.isLinux || Platform.isMacOS)
+              _Row(
+                icon: Icons.power_settings_new_rounded,
+                label: l.startOnBoot,
+                child: Switch(
+                  value: s.autostart,
+                  onChanged: (v) => s.update(autostart: v),
+                ),
+              ),
+            // Only with the start at sign-in: dimmed without it. Both rows are
+            // under the one condition: an `if` covers only the element after it.
+            if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) ...[
+              Opacity(
+                opacity: s.autostart ? 1 : 0.5,
+                child: _Row(
+                  under: true,
+                  icon: Icons.open_in_new_rounded,
+                  label: l.autostartShowsWindow,
+                  child: Switch(
+                    value: s.autostartShowsWindow,
+                    onChanged: s.autostart
+                        ? (v) => s.update(autostartShowsWindow: v)
+                        : null,
+                  ),
+                ),
+              ),
+              Opacity(
+                opacity: s.autostart ? 1 : 0.5,
+                child: _Row(
+                  under: true,
+                  icon: Icons.link_rounded,
+                  label: l.connectOnStartup,
+                  child: Switch(
+                    value: s.autoConnect,
+                    onChanged: s.autostart
+                        ? (v) => s.update(autoConnect: v)
+                        : null,
+                  ),
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+      const SizedBox(height: 16),
+      _lightDancePanel(context, l, s),
+    ],
+  );
+
+  /// Settings > Light dance: the app's neon as one panel over a sample
+  /// of the look it gives the app — the switch, the ring's shape, the
+  /// beat's speed, and the home page's live wave.
+  Widget _lightDancePanel(
+    BuildContext context,
+    AppLocalizations l,
+    AppSettings s,
+  ) => Panel(
+    title: l.sectionLightDance,
+    icon: Icons.auto_awesome_rounded,
+    trailing: Switch(
+      value: s.lightDance,
+      onChanged: (v) => s.update(lightDance: v),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // The sample: the home page's sea, redrawn on the dance's own
+        // beat, so these settings show their own effect at no cost of
+        // an animation of their own (ui/live_wave.dart).
+        _danceSample(context, s),
+        if (s.lightDance) ...[
+          _Choice<String>(
+            icon: Icons.blur_on_rounded,
+            title: l.danceShape,
+            value: s.danceShape,
+            onChanged: (v) => s.update(danceShape: v),
+            options: [
+              ('chase', l.danceShapeChase, null),
+              ('triple', l.danceShapeTriple, null),
+              ('duet', l.danceShapeDuet, null),
+              ('comet', l.danceShapeComet, null),
+              ('stars', l.danceShapeStars, null),
+            ],
           ),
-        if (Platform.isWindows || Platform.isLinux || Platform.isMacOS)
+          _Choice<int>(
+            icon: Icons.timer_outlined,
+            title: l.danceSpeed,
+            value: s.danceSpeed,
+            onChanged: (v) => s.update(danceSpeed: v),
+            options: [
+              (1, l.danceSpeed1, null),
+              (2, l.danceSpeed2, null),
+              (3, l.danceSpeed3, null),
+              (4, l.danceSpeed4, null),
+            ],
+          ),
           _Row(
-            icon: Icons.power_settings_new_rounded,
-            label: l.startOnBoot,
+            icon: Icons.waves_rounded,
+            label: l.showLiveWave,
             child: Switch(
-              value: s.autostart,
-              onChanged: (v) => s.update(autostart: v),
-            ),
-          ),
-        // Only with the start at sign-in: dimmed without it. Both rows are
-        // under the one condition: an `if` covers only the element after it.
-        if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) ...[
-          Opacity(
-            opacity: s.autostart ? 1 : 0.5,
-            child: _Row(
-              under: true,
-              icon: Icons.open_in_new_rounded,
-              label: l.autostartShowsWindow,
-              child: Switch(
-                value: s.autostartShowsWindow,
-                onChanged: s.autostart
-                    ? (v) => s.update(autostartShowsWindow: v)
-                    : null,
-              ),
-            ),
-          ),
-          Opacity(
-            opacity: s.autostart ? 1 : 0.5,
-            child: _Row(
-              under: true,
-              icon: Icons.link_rounded,
-              label: l.connectOnStartup,
-              child: Switch(
-                value: s.autoConnect,
-                onChanged: s.autostart ? (v) => s.update(autoConnect: v) : null,
-              ),
+              value: s.showLiveWave,
+              onChanged: (v) => s.update(showLiveWave: v),
             ),
           ),
         ],
       ],
     ),
   );
+
+  /// The sample of the dance's look: the traffic sea, its color on the
+  /// beat ([DanceClock]), still and canary yellow while the dance is
+  /// off (ui/live_wave.dart).
+  Widget _danceSample(BuildContext context, AppSettings s) {
+    final dance = DanceScope.of(context);
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    return ListenableBuilder(
+      listenable: dance.clock,
+      builder: (context, _) => ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: LiveWave(
+          // A sample's own steady stream, high enough to read as
+          // traffic next to the ridges' fixed ceiling.
+          down: 1600000,
+          up: 420000,
+          tick: dance.clock.tick,
+          dark: dark,
+          height: 84,
+          animate: false,
+          shape: dance.shape,
+          enabled: s.lightDance,
+          labels: false,
+        ),
+      ),
+    );
+  }
 
   Widget _connection(AppLocalizations l) {
     final status = _core.status;

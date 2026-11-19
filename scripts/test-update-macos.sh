@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Tries the macOS app's own update end to end, on CI's Mac (GitHub
 # Actions), as a user's copy goes through it, from a version before the
-# rename to Arman VPN (1.0.9) on: the released app of version <old>
+# rename to V2RVPN (1.0.9) on: the released app of version <old>
 # (Firefox VPN.app) goes to /Applications and updates itself with its own
 # code to <v>, the app that scripts/build-macos.sh built (its tar.gz in
 # dist/), which then updates itself to <v+1>, both from a test release on
@@ -30,8 +30,8 @@ old_module=github.com/armanlife/firefox-vpn-client/core
 old_app="/Applications/Firefox VPN.app"
 old_data="$HOME/Library/Application Support/Firefox VPN Client"
 out="${1:-$root/dist/update-test}"
-app="/Applications/Arman VPN.app"
-data="$HOME/Library/Application Support/Arman VPN"
+app="/Applications/V2RVPN.app"
+data="$HOME/Library/Application Support/V2RVPN"
 server="http://127.0.0.1:18080"
 work="$(mktemp -d)"
 mkdir -p "$out"
@@ -104,11 +104,11 @@ mv "$work/old/Firefox VPN.app" "$old_app"
 # again as the build seals it.
 bundle() {
   mkdir -p "$1"
-  tar -xzf "$root/dist/Arman-VPN-$version-macOS.tar.gz" -C "$1"
-  cp "$work/core-$2" "$1/Arman VPN.app/Contents/MacOS/arman-vpn-core"
-  codesign --force --sign - "$1/Arman VPN.app/Contents/MacOS/arman-vpn-core"
-  codesign --force --sign - "$1/Arman VPN.app"
-  codesign --verify --deep --strict "$1/Arman VPN.app"
+  tar -xzf "$root/dist/V2RVPN-$version-macOS.tar.gz" -C "$1"
+  cp "$work/core-$2" "$1/V2RVPN.app/Contents/MacOS/arman-vpn-core"
+  codesign --force --sign - "$1/V2RVPN.app/Contents/MacOS/arman-vpn-core"
+  codesign --force --sign - "$1/V2RVPN.app"
+  codesign --verify --deep --strict "$1/V2RVPN.app"
 }
 bundle "$work/new" "$version"
 bundle "$work/next" "$next"
@@ -121,12 +121,12 @@ bundle "$work/next" "$next"
 release() {
   local dir="$work/www/releases/download/v$1"
   mkdir -p "$dir"
-  COPYFILE_DISABLE=1 tar --no-mac-metadata -czf "$dir/$2" -C "$3" "Arman VPN.app"
+  COPYFILE_DISABLE=1 tar --no-mac-metadata -czf "$dir/$2" -C "$3" "V2RVPN.app"
   (cd "$dir" && shasum -a 256 "$2" >SHA256SUMS.txt)
   (cd "$root/core" && go run ./tools/sign -key "$work/test.signing-key" "$dir/SHA256SUMS.txt")
 }
 release "$version" "Firefox-VPN-$version-macOS.tar.gz" "$work/new"
-release "$next" "Arman-VPN-$next-macOS.tar.gz" "$work/next"
+release "$next" "V2RVPN-$next-macOS.tar.gz" "$work/next"
 # offer VERSION: updates.json offers it to macOS.
 offer() {
   printf '{"macos": "%s"}\n' "$1" >"$work/www/updates.json"
@@ -190,7 +190,7 @@ hop() {
 # From the old name: the old app's update puts the new one in its bundle,
 # which keeps its name; the new app moves the data folder.
 hop "$old_version" "$version" "$old_app/Contents/MacOS/Firefox VPN"
-wait_for "the new version's start" 60 pgrep -f "^$old_app/Contents/MacOS/Arman VPN --autostart"
+wait_for "the new version's start" 60 pgrep -f "^$old_app/Contents/MacOS/V2RVPN --autostart"
 wait_for "the data folder's new name" 60 test -d "$data"
 [ ! -e "$old_data" ] || { echo "the old data folder is still there" >&2; exit 1; }
 got="$("$old_app/Contents/MacOS/arman-vpn-core" -version)"
@@ -201,12 +201,12 @@ codesign --verify --deep --strict "$old_app"
 pkill -f "^$old_app/Contents/MacOS/" || true
 wait_for "the app to quit" 60 stopped
 offer "$next"
-hop "$version" "$next" "$old_app/Contents/MacOS/Arman VPN"
+hop "$version" "$next" "$old_app/Contents/MacOS/V2RVPN"
 wait_for "the bundle's new name" 60 test -d "$app"
 [ ! -e "$old_app" ] || { echo "$old_app is still there" >&2; exit 1; }
 got="$("$app/Contents/MacOS/arman-vpn-core" -version)"
 [ "$got" = "$next" ] || { echo "the app's core is $got, not $next" >&2; exit 1; }
 # Started again as it was: in the menu bar.
-wait_for "the newest version's start" 60 pgrep -fl "^$app/Contents/MacOS/Arman VPN --autostart"
+wait_for "the newest version's start" 60 pgrep -fl "^$app/Contents/MacOS/V2RVPN --autostart"
 codesign --verify --deep --strict "$app"
 echo "== updated from $old_version through $version to $next"

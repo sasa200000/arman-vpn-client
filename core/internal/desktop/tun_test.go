@@ -178,7 +178,7 @@ func session(t *testing.T, c *tunapi.Conn, closed chan<- struct{}) {
 	if open.Proxy != "127.0.0.1:5555" || open.Username != "tun" || open.Password != "secret" {
 		t.Errorf("open %+v", open)
 	}
-	c.Send(tunapi.Message{Type: tunapi.TypeOpened, Interface: &tunapi.Interface{Name: "Arman VPN", Index: 7, LUID: 9}})
+	c.Send(tunapi.Message{Type: tunapi.TypeOpened, Interface: &tunapi.Interface{Name: "V2RVPN", Index: 7, LUID: 9}})
 	expect(t, c, tunapi.TypeRoute)
 	c.Send(tunapi.Message{Type: tunapi.TypeRouted})
 	m, err := c.Receive()
@@ -236,7 +236,7 @@ func TestTheServiceGetsTheProgramsThatSkipTheVPN(t *testing.T) {
 		if want := []tunapi.Program{{Name: "steam.exe"}}; !slices.Equal(open.Programs, want) {
 			t.Errorf("opened with %+v, want %+v", open.Programs, want)
 		}
-		c.Send(tunapi.Message{Type: tunapi.TypeOpened, Interface: &tunapi.Interface{Name: "Arman VPN", Index: 7, LUID: 9}})
+		c.Send(tunapi.Message{Type: tunapi.TypeOpened, Interface: &tunapi.Interface{Name: "V2RVPN", Index: 7, LUID: 9}})
 		expect(t, c, tunapi.TypeRoute)
 		c.Send(tunapi.Message{Type: tunapi.TypeRouted})
 		c.Send(tunapi.Message{Type: tunapi.TypeUDPRefused, Program: "Discord.exe", Path: `C:\Apps\Discord.exe`})
@@ -278,7 +278,7 @@ func TestTheServiceGetsTheProgramsThatSkipTheVPN(t *testing.T) {
 		expect(t, c, tunapi.TypeHello)
 		c.Send(tunapi.Message{Type: tunapi.TypeHello, Protocol: 1, MinProtocol: 1, Version: "2.0.0"})
 		expect(t, c, tunapi.TypeOpen)
-		c.Send(tunapi.Message{Type: tunapi.TypeOpened, Interface: &tunapi.Interface{Name: "Arman VPN", Index: 7, LUID: 9}})
+		c.Send(tunapi.Message{Type: tunapi.TypeOpened, Interface: &tunapi.Interface{Name: "V2RVPN", Index: 7, LUID: 9}})
 		expect(t, c, tunapi.TypeRoute)
 		c.Send(tunapi.Message{Type: tunapi.TypeRouted})
 		m, _ := c.Receive()

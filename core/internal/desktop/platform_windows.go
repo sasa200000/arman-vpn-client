@@ -92,6 +92,6 @@ func enableTerminalColors() bool {
 	if err := windows.SetConsoleMode(h, mode|windows.ENABLE_VIRTUAL_TERMINAL_PROCESSING|windows.ENABLE_PROCESSED_OUTPUT); err != nil {
 		return false
 	}
-	os.Stdout.WriteString("\x1b]0;Arman VPN\x07")
+	os.Stdout.WriteString("\x1b]0;V2RVPN\x07")
 	return true
 }

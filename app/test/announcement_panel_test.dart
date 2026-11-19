@@ -1,11 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:arman_vpn/app_settings.dart';
-import 'package:arman_vpn/core/announcements.dart';
-import 'package:arman_vpn/core/updates.dart';
-import 'package:arman_vpn/l10n/app_localizations.dart';
-import 'package:arman_vpn/ui/announcement_panel.dart';
-import 'package:arman_vpn/ui/app.dart';
+import 'package:v2rvpn/app_settings.dart';
+import 'package:v2rvpn/core/announcements.dart';
+import 'package:v2rvpn/core/updates.dart';
+import 'package:v2rvpn/l10n/app_localizations.dart';
+import 'package:v2rvpn/ui/announcement_panel.dart';
+import 'package:v2rvpn/ui/app.dart';
 
 void main() {
   testWidgets(

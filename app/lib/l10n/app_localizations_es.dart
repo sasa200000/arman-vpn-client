@@ -10,7 +10,7 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'Resumen';
@@ -1621,7 +1621,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'El servicio TUN es más reciente que esta app. Actualice la app para usar el modo TUN.';
 
   @override
-  String get tunBusy => 'Otra copia de Arman VPN está usando el modo TUN.';
+  String get tunBusy => 'Otra copia de V2RVPN está usando el modo TUN.';
 
   @override
   String get tunNoDriver =>
@@ -1648,11 +1648,11 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Arman VPN quiere instalar el servicio para el modo TUN.';
+      'V2RVPN quiere instalar el servicio para el modo TUN.';
 
   @override
   String get tunRemovePrompt =>
-      'Arman VPN quiere quitar el servicio del modo TUN.';
+      'V2RVPN quiere quitar el servicio del modo TUN.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1793,4 +1793,43 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get relayTestInterrupted =>
       'La prueba terminó antes de recibir un resultado completo.';
+
+  @override
+  String get sectionLightDance => 'Baile de luces';
+
+  @override
+  String get danceShape => 'Forma del anillo';
+
+  @override
+  String get danceShapeChase => 'Persecución';
+
+  @override
+  String get danceShapeTriple => 'Trío';
+
+  @override
+  String get danceShapeDuet => 'Dúo';
+
+  @override
+  String get danceShapeComet => 'Cometa';
+
+  @override
+  String get danceShapeStars => 'Estrellas';
+
+  @override
+  String get danceSpeed => 'Velocidad del pulso';
+
+  @override
+  String get danceSpeed1 => 'Lento';
+
+  @override
+  String get danceSpeed2 => 'Normal';
+
+  @override
+  String get danceSpeed3 => 'Rápido';
+
+  @override
+  String get danceSpeed4 => 'Muy rápido';
+
+  @override
+  String get showLiveWave => 'Onda en vivo';
 }

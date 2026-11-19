@@ -10,7 +10,7 @@ class AppLocalizationsFa extends AppLocalizations {
   AppLocalizationsFa([String locale = 'fa']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'نمای کلی';
@@ -1596,7 +1596,7 @@ class AppLocalizationsFa extends AppLocalizations {
       'سرویس TUN از این برنامه جدیدتر است. برای استفاده از حالت TUN برنامه را به‌روز کنید.';
 
   @override
-  String get tunBusy => 'حالت TUN را نسخه دیگری از Arman VPN استفاده می‌کند.';
+  String get tunBusy => 'حالت TUN را نسخه دیگری از V2RVPN استفاده می‌کند.';
 
   @override
   String get tunNoDriver =>
@@ -1622,11 +1622,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get tunServiceRemoved => 'سرویس TUN حذف شد.';
 
   @override
-  String get tunInstallPrompt => 'برای حالت TUN، سرویس Arman VPN باید نصب شود.';
+  String get tunInstallPrompt => 'برای حالت TUN، سرویس V2RVPN باید نصب شود.';
 
   @override
-  String get tunRemovePrompt =>
-      'برای حذف حالت TUN، سرویس Arman VPN باید حذف شود.';
+  String get tunRemovePrompt => 'برای حذف حالت TUN، سرویس V2RVPN باید حذف شود.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1766,4 +1765,43 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get relayTestInterrupted => 'تست پیش از دریافت نتیجه کامل متوقف شد.';
+
+  @override
+  String get sectionLightDance => 'رقص نور';
+
+  @override
+  String get danceShape => 'شکل حلقه';
+
+  @override
+  String get danceShapeChase => 'تعقیبی';
+
+  @override
+  String get danceShapeTriple => 'سه‌گانه';
+
+  @override
+  String get danceShapeDuet => 'دوئت';
+
+  @override
+  String get danceShapeComet => 'دنباله‌دار';
+
+  @override
+  String get danceShapeStars => 'ستاره‌ای';
+
+  @override
+  String get danceSpeed => 'سرعت ضرباهنگ';
+
+  @override
+  String get danceSpeed1 => 'آرام';
+
+  @override
+  String get danceSpeed2 => 'معمولی';
+
+  @override
+  String get danceSpeed3 => 'سریع';
+
+  @override
+  String get danceSpeed4 => 'خیلی سریع';
+
+  @override
+  String get showLiveWave => 'موج زنده';
 }

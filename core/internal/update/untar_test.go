@@ -105,9 +105,9 @@ func TestUntarKeepsLinksWithinTheApp(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("links need Windows' developer mode")
 	}
-	fw := "Arman VPN.app/Contents/Frameworks/FlutterMacOS.framework/"
+	fw := "V2RVPN.app/Contents/Frameworks/FlutterMacOS.framework/"
 	file := writeTar(t,
-		tarExe("Arman VPN.app/Contents/MacOS/Arman VPN", "app"),
+		tarExe("V2RVPN.app/Contents/MacOS/V2RVPN", "app"),
 		tarSymlink(fw+"FlutterMacOS", "Versions/Current/FlutterMacOS"),
 		tarSymlink(fw+"Versions/Current", "A"),
 		tarExe(fw+"Versions/A/FlutterMacOS", "flutter"),
@@ -180,24 +180,24 @@ func TestAMacReleaseInstalls(t *testing.T) {
 	t.Cleanup(func() { thePackage = windowsPackage })
 	r := newRelease(t, "1.2.3")
 	files := []tarFile{
-		tarRegular("Arman VPN.app/Contents/Info.plist", "plist 1.2.3"),
-		tarExe("Arman VPN.app/Contents/MacOS/Arman VPN", "app 1.2.3"),
-		tarExe("Arman VPN.app/Contents/MacOS/arman-vpn-core", "core 1.2.3"),
-		tarExe("Arman VPN.app/Contents/MacOS/arman-vpn-tun", "tun 1.2.3"),
+		tarRegular("V2RVPN.app/Contents/Info.plist", "plist 1.2.3"),
+		tarExe("V2RVPN.app/Contents/MacOS/V2RVPN", "app 1.2.3"),
+		tarExe("V2RVPN.app/Contents/MacOS/arman-vpn-core", "core 1.2.3"),
+		tarExe("V2RVPN.app/Contents/MacOS/arman-vpn-tun", "tun 1.2.3"),
 	}
 	if runtime.GOOS != "windows" {
-		files = append(files, tarSymlink("Arman VPN.app/Contents/Frameworks/App.framework/App", "Versions/Current/App"))
+		files = append(files, tarSymlink("V2RVPN.app/Contents/Frameworks/App.framework/App", "Versions/Current/App"))
 	}
 	r.files[AssetName("1.2.3")] = appTar(t, files...)
 	r.sign()
 	r.serve(t)
-	if AssetName("1.2.3") != "Arman-VPN-1.2.3-macOS.tar.gz" {
+	if AssetName("1.2.3") != "V2RVPN-1.2.3-macOS.tar.gz" {
 		t.Fatalf("asset %s", AssetName("1.2.3"))
 	}
 	appDir, dataDir := appFolder(t, "1.0.0", false)
 	p := installed(t, appDir, dataDir)
 	contents := filepath.Join(p.Package, "Contents")
-	if read(t, filepath.Join(contents, "MacOS", "arman-vpn-core")) != "core 1.2.3" || read(t, filepath.Join(contents, "MacOS", "Arman VPN")) != "app 1.2.3" {
+	if read(t, filepath.Join(contents, "MacOS", "arman-vpn-core")) != "core 1.2.3" || read(t, filepath.Join(contents, "MacOS", "V2RVPN")) != "app 1.2.3" {
 		t.Fatalf("unpacked into %s", p.Package)
 	}
 	if entries, _ := os.ReadDir(p.Package); len(entries) != 1 {
@@ -213,9 +213,9 @@ func TestAppDirIsTheFolderThatHoldsTheCore(t *testing.T) {
 		pkg       appPackage
 		exe, want string
 	}{
-		{windowsPackage, "/Users/a/Arman VPN/core/arman-vpn-core.exe", "/Users/a/Arman VPN"},
+		{windowsPackage, "/Users/a/V2RVPN/core/arman-vpn-core.exe", "/Users/a/V2RVPN"},
 		{linuxPackage, "/home/a/.local/opt/arman-vpn/core/arman-vpn-core", "/home/a/.local/opt/arman-vpn"},
-		{macPackage, "/Applications/Arman VPN.app/Contents/MacOS/arman-vpn-core", "/Applications/Arman VPN.app"},
+		{macPackage, "/Applications/V2RVPN.app/Contents/MacOS/arman-vpn-core", "/Applications/V2RVPN.app"},
 	} {
 		thePackage = c.pkg
 		if got := AppDir(filepath.FromSlash(c.exe)); got != filepath.FromSlash(c.want) {

@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest a new feature or improvement for Arman VPN.
+description: Suggest a new feature or improvement for V2RVPN.
 body:
   - type: textarea
     id: feature

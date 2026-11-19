@@ -1,4 +1,4 @@
-import 'package:arman_vpn/ui/focus_ring.dart';
+import 'package:v2rvpn/ui/focus_ring.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';

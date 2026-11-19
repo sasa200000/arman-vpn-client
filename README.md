@@ -5,11 +5,11 @@
 </div>
 <br>
 
-<p align="center"><img src="docs/images/logo.png" width="128" alt="Arman VPN"></p>
+<p align="center"><img src="docs/images/logo.png" width="128" alt="V2RVPN"></p>
 
-<h1 align="center">Arman VPN</h1>
+<h1 align="center">V2RVPN</h1>
 
-<p align="center"><b>Unofficial project.</b> Arman VPN is an independent project. It is not made, owned, sponsored, or endorsed by Mozilla, and is not affiliated with Mozilla in any way. See the <a href="#disclaimer">disclaimer</a>.</p>
+<p align="center"><b>Unofficial project.</b> V2RVPN is an independent project. It is not made, owned, sponsored, or endorsed by Mozilla, and is not affiliated with Mozilla in any way. See the <a href="#disclaimer">disclaimer</a>.</p>
 
 <div align="center">
 
@@ -20,13 +20,13 @@
 
 </div>
 
-## What is Arman VPN?
+## What is V2RVPN?
 
-**Arman VPN** is a free, open-source VPN that works with a Firefox Account. It carries your internet traffic through Mozilla's servers, on **Fastly**'s infrastructure, over secure **HTTP/1.1, HTTP/2, and HTTP/3** tunnels.
+**V2RVPN** is a free, open-source VPN that works with a Firefox Account. It carries your internet traffic through Mozilla's servers, on **Fastly**'s infrastructure, over secure **HTTP/1.1, HTTP/2, and HTTP/3** tunnels.
 
 For **Android, Windows, macOS, and Linux**; completely free, with no ads.
 
-<p align="center"><a href="https://raw.githubusercontent.com/armanlife/arman-vpn-client/main/docs/screenshots/main.webp" target="_blank"><img src="docs/screenshots/main.webp" width="720" alt="Arman VPN"></a></p>
+<p align="center"><a href="https://raw.githubusercontent.com/armanlife/arman-vpn-client/main/docs/screenshots/main.webp" target="_blank"><img src="docs/screenshots/main.webp" width="720" alt="V2RVPN"></a></p>
 
 ## 🚀 Main features
 
@@ -77,11 +77,11 @@ For **Android, Windows, macOS, and Linux**; completely free, with no ads.
 <tr><th>System</th><th>Download</th></tr>
 </thead>
 <tbody>
-<tr><td>Android</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Android-universal.apk"><img src="https://img.shields.io/badge/APK-Universal-1a7f37?logo=android&logoColor=white" alt="APK Universal"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Android-arm64-v8a.apk"><img src="https://img.shields.io/badge/APK-ARMv8-2da44e?logo=android&logoColor=white" alt="APK ARMv8"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Android-armeabi-v7a.apk"><img src="https://img.shields.io/badge/APK-ARMv7-4ac26b?logo=android&logoColor=white" alt="APK ARMv7"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Android-x86_64.apk"><img src="https://img.shields.io/badge/APK-x64-6fdd8b?logo=android&logoColor=white" alt="APK x64"></a></td></tr>
-<tr><td>Android TV</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Android-universal.apk"><img src="https://img.shields.io/badge/APK-Universal-1a7f37?logo=android&logoColor=white" alt="APK Universal"></a></td></tr>
-<tr><td>Windows</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Windows-Setup-x64.exe"><img src="https://img.shields.io/badge/Setup-x64-0550ae?logo=windows&logoColor=white" alt="Setup x64"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Windows-x64.zip"><img src="https://img.shields.io/badge/Portable-x64-0969da" alt="Portable x64"></a></td></tr>
-<tr><td>macOS</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-macOS.dmg"><img src="https://img.shields.io/badge/DMG-Universal-24292f?logo=apple&logoColor=white" alt="DMG Universal"></a></td></tr>
-<tr><td rowspan="2">Linux</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Linux-amd64.tar.gz"><img src="https://img.shields.io/badge/App-amd64-e36209?logo=linux&logoColor=white" alt="App amd64"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/Arman-VPN-Linux-arm64.tar.gz"><img src="https://img.shields.io/badge/App-ARM64-e36209?logo=linux&logoColor=white" alt="App ARM64"></a></td></tr>
+<tr><td>Android</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Android-universal.apk"><img src="https://img.shields.io/badge/APK-Universal-1a7f37?logo=android&logoColor=white" alt="APK Universal"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Android-arm64-v8a.apk"><img src="https://img.shields.io/badge/APK-ARMv8-2da44e?logo=android&logoColor=white" alt="APK ARMv8"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Android-armeabi-v7a.apk"><img src="https://img.shields.io/badge/APK-ARMv7-4ac26b?logo=android&logoColor=white" alt="APK ARMv7"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Android-x86_64.apk"><img src="https://img.shields.io/badge/APK-x64-6fdd8b?logo=android&logoColor=white" alt="APK x64"></a></td></tr>
+<tr><td>Android TV</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Android-universal.apk"><img src="https://img.shields.io/badge/APK-Universal-1a7f37?logo=android&logoColor=white" alt="APK Universal"></a></td></tr>
+<tr><td>Windows</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Windows-Setup-x64.exe"><img src="https://img.shields.io/badge/Setup-x64-0550ae?logo=windows&logoColor=white" alt="Setup x64"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Windows-x64.zip"><img src="https://img.shields.io/badge/Portable-x64-0969da" alt="Portable x64"></a></td></tr>
+<tr><td>macOS</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-macOS.dmg"><img src="https://img.shields.io/badge/DMG-Universal-24292f?logo=apple&logoColor=white" alt="DMG Universal"></a></td></tr>
+<tr><td rowspan="2">Linux</td><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Linux-amd64.tar.gz"><img src="https://img.shields.io/badge/App-amd64-e36209?logo=linux&logoColor=white" alt="App amd64"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/V2RVPN-Linux-arm64.tar.gz"><img src="https://img.shields.io/badge/App-ARM64-e36209?logo=linux&logoColor=white" alt="App ARM64"></a></td></tr>
 <tr><td><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/arman-vpn-core-linux-amd64.tar.gz"><img src="https://img.shields.io/badge/Core-amd64-f0883e?logo=linux&logoColor=white" alt="Core amd64"></a><br><a href="https://github.com/armanlife/arman-vpn-client/releases/latest/download/arman-vpn-core-linux-arm64.tar.gz"><img src="https://img.shields.io/badge/Core-ARM64-f6a35e?logo=linux&logoColor=white" alt="Core ARM64"></a></td></tr>
 </tbody>
 </table>
@@ -103,7 +103,7 @@ curl -fsSL https://raw.githubusercontent.com/armanlife/arman-vpn-client/main/ins
 
 ### 🌐 Web panel
 
-For Linux servers, Arman VPN has a **web panel** that opens in any browser and has everything the app has: managing accounts and data, choosing a server and testing delay, the connection test, the live log, and every setting.
+For Linux servers, V2RVPN has a **web panel** that opens in any browser and has everything the app has: managing accounts and data, choosing a server and testing delay, the connection test, the live log, and every setting.
 
 <p align="center"><img src="docs/screenshots/web.webp" width="720" alt="Web panel"></p>
 
@@ -117,7 +117,7 @@ On the server, run `sudo arman-vpn` to open the management menu:
 ```text
 $ sudo arman-vpn
 
-  Arman VPN
+  V2RVPN
   ────────────────────────────────────────────────────────────────────────────
     Service     ● running
     Autostart   on

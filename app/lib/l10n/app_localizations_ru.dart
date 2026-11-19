@@ -10,7 +10,7 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => 'Обзор';
@@ -1619,7 +1619,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Служба TUN новее этого приложения. Обновите приложение, чтобы пользоваться режимом TUN.';
 
   @override
-  String get tunBusy => 'Режимом TUN пользуется другая копия Arman VPN.';
+  String get tunBusy => 'Режимом TUN пользуется другая копия V2RVPN.';
 
   @override
   String get tunNoDriver =>
@@ -1646,10 +1646,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get tunInstallPrompt =>
-      'Arman VPN хочет установить службу для режима TUN.';
+      'V2RVPN хочет установить службу для режима TUN.';
 
   @override
-  String get tunRemovePrompt => 'Arman VPN хочет удалить службу режима TUN.';
+  String get tunRemovePrompt => 'V2RVPN хочет удалить службу режима TUN.';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1790,4 +1790,43 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get relayTestInterrupted =>
       'Проверка завершилась до получения полного результата.';
+
+  @override
+  String get sectionLightDance => 'Световой танец';
+
+  @override
+  String get danceShape => 'Форма кольца';
+
+  @override
+  String get danceShapeChase => 'Погоня';
+
+  @override
+  String get danceShapeTriple => 'Тройка';
+
+  @override
+  String get danceShapeDuet => 'Дуэт';
+
+  @override
+  String get danceShapeComet => 'Комета';
+
+  @override
+  String get danceShapeStars => 'Звёзды';
+
+  @override
+  String get danceSpeed => 'Темп';
+
+  @override
+  String get danceSpeed1 => 'Медленно';
+
+  @override
+  String get danceSpeed2 => 'Обычно';
+
+  @override
+  String get danceSpeed3 => 'Быстро';
+
+  @override
+  String get danceSpeed4 => 'Очень быстро';
+
+  @override
+  String get showLiveWave => 'Живая волна';
 }

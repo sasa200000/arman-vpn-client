@@ -10,7 +10,7 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => '概览';
@@ -1545,7 +1545,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tunAppOutdated => 'TUN 服务比此应用新。请更新应用以使用 TUN 模式。';
 
   @override
-  String get tunBusy => '另一个 Arman VPN 副本正在使用 TUN 模式。';
+  String get tunBusy => '另一个 V2RVPN 副本正在使用 TUN 模式。';
 
   @override
   String get tunNoDriver => '系统的 TUN 驱动不可用。请重启电脑后重试。';
@@ -1569,10 +1569,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tunServiceRemoved => '已移除 TUN 服务。';
 
   @override
-  String get tunInstallPrompt => 'Arman VPN 想要安装 TUN 模式的服务。';
+  String get tunInstallPrompt => 'V2RVPN 想要安装 TUN 模式的服务。';
 
   @override
-  String get tunRemovePrompt => 'Arman VPN 想要移除 TUN 模式的服务。';
+  String get tunRemovePrompt => 'V2RVPN 想要移除 TUN 模式的服务。';
 
   @override
   String tunRemoveFailed(String error) {
@@ -1709,6 +1709,45 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get relayTestInterrupted => '测试在收到完整结果前结束。';
+
+  @override
+  String get sectionLightDance => '灯光舞';
+
+  @override
+  String get danceShape => '光环形状';
+
+  @override
+  String get danceShapeChase => '追逐';
+
+  @override
+  String get danceShapeTriple => '三重';
+
+  @override
+  String get danceShapeDuet => '双人';
+
+  @override
+  String get danceShapeComet => '彗星';
+
+  @override
+  String get danceShapeStars => '星星';
+
+  @override
+  String get danceSpeed => '节拍速度';
+
+  @override
+  String get danceSpeed1 => '慢';
+
+  @override
+  String get danceSpeed2 => '正常';
+
+  @override
+  String get danceSpeed3 => '快';
+
+  @override
+  String get danceSpeed4 => '很快';
+
+  @override
+  String get showLiveWave => '实时波形';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -1716,7 +1755,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   AppLocalizationsZhHant() : super('zh_Hant');
 
   @override
-  String get appTitle => 'Arman VPN';
+  String get appTitle => 'V2RVPN';
 
   @override
   String get navOverview => '總覽';
@@ -3252,7 +3291,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get tunAppOutdated => 'TUN 服務比此應用程式新。請更新應用程式以使用 TUN 模式。';
 
   @override
-  String get tunBusy => '另一個 Arman VPN 副本正在使用 TUN 模式。';
+  String get tunBusy => '另一個 V2RVPN 副本正在使用 TUN 模式。';
 
   @override
   String get tunNoDriver => '系統的 TUN 驅動程式無法使用。請重新啟動電腦後再試一次。';
@@ -3276,10 +3315,10 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get tunServiceRemoved => '已移除 TUN 服務。';
 
   @override
-  String get tunInstallPrompt => 'Arman VPN 想要安裝 TUN 模式的服務。';
+  String get tunInstallPrompt => 'V2RVPN 想要安裝 TUN 模式的服務。';
 
   @override
-  String get tunRemovePrompt => 'Arman VPN 想要移除 TUN 模式的服務。';
+  String get tunRemovePrompt => 'V2RVPN 想要移除 TUN 模式的服務。';
 
   @override
   String tunRemoveFailed(String error) {
@@ -3416,4 +3455,43 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get relayTestInterrupted => '測試在收到完整結果前結束。';
+
+  @override
+  String get sectionLightDance => '燈光舞';
+
+  @override
+  String get danceShape => '光環形狀';
+
+  @override
+  String get danceShapeChase => '追逐';
+
+  @override
+  String get danceShapeTriple => '三重';
+
+  @override
+  String get danceShapeDuet => '雙人';
+
+  @override
+  String get danceShapeComet => '彗星';
+
+  @override
+  String get danceShapeStars => '星星';
+
+  @override
+  String get danceSpeed => '節拍速度';
+
+  @override
+  String get danceSpeed1 => '慢';
+
+  @override
+  String get danceSpeed2 => '正常';
+
+  @override
+  String get danceSpeed3 => '快';
+
+  @override
+  String get danceSpeed4 => '很快';
+
+  @override
+  String get showLiveWave => '即時波形';
 }

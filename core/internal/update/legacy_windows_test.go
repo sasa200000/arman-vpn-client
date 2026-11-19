@@ -56,14 +56,14 @@ func TestMigrateRenamesSetupsEntryAndRemovesThePlaceholder(t *testing.T) {
 	if err := Migrate(app); err != nil {
 		t.Fatal(err)
 	}
-	if value("DisplayName") != "Arman VPN" || value("DisplayIcon") != filepath.Join(app, "arman-vpn.exe") {
+	if value("DisplayName") != "V2RVPN" || value("DisplayIcon") != filepath.Join(app, "arman-vpn.exe") {
 		t.Fatalf("entry: %q, %q", value("DisplayName"), value("DisplayIcon"))
 	}
 	if _, err := os.Stat(placeholder); err != nil {
 		t.Fatalf("a real file went: %v", err)
 	}
 	// Once more: nothing changes.
-	if err := Migrate(app); err != nil || value("DisplayName") != "Arman VPN" {
+	if err := Migrate(app); err != nil || value("DisplayName") != "V2RVPN" {
 		t.Fatalf("again: %v, %q", err, value("DisplayName"))
 	}
 }

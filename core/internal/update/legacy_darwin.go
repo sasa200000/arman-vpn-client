@@ -13,7 +13,7 @@ import (
 func init() { relocate = renameBundle }
 
 // renameBundle moves a bundle of a version before 1.0.9 (Firefox VPN.app)
-// to Arman VPN.app beside it, once an update replaced its contents and
+// to V2RVPN.app beside it, once an update replaced its contents and
 // while nothing of the app runs; it stays where it is when that name is
 // taken or the move fails.
 func renameBundle(appDir string) string {

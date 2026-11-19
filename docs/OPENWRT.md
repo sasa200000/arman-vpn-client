@@ -1,4 +1,4 @@
-# Arman VPN on OpenWrt
+# V2RVPN on OpenWrt
 
 Your router becomes a **proxy** (SOCKS5 and HTTP, one port) with a **web panel**. Your devices use it, and their traffic goes through Mozilla's VPN servers.
 
@@ -131,11 +131,11 @@ Calls and games on other ports do not work.
 
 ## 6. The whole network, with PassWall2
 
-With [PassWall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) on the router, every device goes through Arman VPN with no setting on the device, and PassWall2's own rules choose what goes through it and what goes direct.
+With [PassWall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) on the router, every device goes through V2RVPN with no setting on the device, and PassWall2's own rules choose what goes through it and what goes direct.
 
 1. **Node List → Add:** protocol **Socks**, address `127.0.0.1`, port `10810`, and the proxy login from step 2.
 2. **Basic Settings:** choose this node and turn the main switch on.
-3. **Turn off Localhost Proxy** (the router's own traffic). Otherwise Arman VPN's own connections go back into it in a loop, and nothing connects.
+3. **Turn off Localhost Proxy** (the router's own traffic). Otherwise V2RVPN's own connections go back into it in a loop, and nothing connects.
 4. **DNS → Remote DNS Protocol: DoH** (`https://1.1.1.1/dns-query`).
 5. Make your routing rules in PassWall2 (for example, your country's sites direct).
 

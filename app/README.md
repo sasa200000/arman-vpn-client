@@ -1,4 +1,4 @@
-# Arman VPN app
+# V2RVPN app
 
 The Flutter app: the shared UI for Windows, Linux, macOS, and Android. It holds no
 VPN logic; it is a client of the core's dashboard API on loopback
@@ -50,7 +50,7 @@ native side of the same channel.
 
 ## Desktop model (macOS)
 
-The same again: `Arman VPN.app` holds `arman-vpn-core` beside its
+The same again: `V2RVPN.app` holds `arman-vpn-core` beside its
 executable in `Contents/MacOS`, and `DesktopBridge` in
 `macos/Runner/MainFlutterWindow.swift` is the native side of the channel.
 
@@ -67,12 +67,12 @@ executable in `Contents/MacOS`, and `DesktopBridge` in
 
 The data folder (accounts, settings, logs) on Windows is `user-data` next
 to the app (not `data`, which holds Flutter's own files). The installer puts
-the app by default in `%LOCALAPPDATA%\Programs\Arman VPN`, a folder
+the app by default in `%LOCALAPPDATA%\Programs\V2RVPN`, a folder
 of the user's own; the first install lets the user choose another folder they
 can write to. A new version replaces the app where it is, keeping
-`user-data`; the portable zip holds an `Arman VPN` folder to unpack over the
+`user-data`; the portable zip holds an `V2RVPN` folder to unpack over the
 old one. On macOS the
-data is in `~/Library/Application Support/Arman VPN`, on Linux in
+data is in `~/Library/Application Support/V2RVPN`, on Linux in
 `~/.local/share/arman-vpn`; a file named `portable` next to the app keeps
 it in `user-data` beside it there too.
 
@@ -201,9 +201,9 @@ shield in white, for the app's tray (`assets/tray`) and the core's
 ## Development
 
 - Build a release folder with the core: `scripts\build-windows.ps1` from
-  the repository root (output in `dist\Arman-VPN-<version>\`); on Linux,
-  `scripts/build-linux.sh` (output in `dist/Arman-VPN-<version>-Linux-<amd64|arm64>.tar.gz`);
-  on macOS, `scripts/build-macos.sh` (output in `dist/Arman-VPN-<version>-macOS.dmg`).
+  the repository root (output in `dist\V2RVPN-<version>\`); on Linux,
+  `scripts/build-linux.sh` (output in `dist/V2RVPN-<version>-Linux-<amd64|arm64>.tar.gz`);
+  on macOS, `scripts/build-macos.sh` (output in `dist/V2RVPN-<version>-macOS.dmg`).
 - Work on the UI without a real core or accounts:
 
   ```

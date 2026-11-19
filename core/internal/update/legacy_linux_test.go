@@ -25,7 +25,7 @@ func TestMigrateFixesTheMenuEntryAndRemovesTheLinks(t *testing.T) {
 		t.Fatal(err)
 	}
 	data, _ := os.ReadFile(entry)
-	want := "[Desktop Entry]\nName=Arman VPN\nExec=\"" + filepath.Join(app, "arman-vpn") + "\"\nIcon=" + app + "/data/app_icon.png\n"
+	want := "[Desktop Entry]\nName=V2RVPN\nExec=\"" + filepath.Join(app, "arman-vpn") + "\"\nIcon=" + app + "/data/app_icon.png\n"
 	if string(data) != want {
 		t.Fatalf("entry:\n%s\nwant:\n%s", data, want)
 	}
