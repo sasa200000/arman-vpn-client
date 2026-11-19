@@ -440,9 +440,10 @@ class DanceScope extends InheritedWidget {
   /// The dance in this part of the tree; a page built without it (a test of
   /// one page alone) still gets a still, canary-colored dance rather than
   /// failing.
-  static DanceScope of(BuildContext context) => maybeOf(context) ?? _fallback;
+  static DanceScope of(BuildContext context) =>
+      maybeOf(context) ?? _fallbackScope;
 
-  static final _fallback = DanceScope._fallback();
+  static final _fallbackScope = DanceScope._fallback();
 
   DanceScope._fallback()
     : clock = DanceClock(enabled: false),

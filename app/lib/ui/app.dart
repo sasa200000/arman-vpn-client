@@ -164,15 +164,6 @@ class _VpnAppState extends State<VpnApp> {
   );
 }
 
-/// Whether this run is a Dart VM test. `flutter test` sets
-/// FLUTTER_TEST=true; a plain `dart test` does not.
-const bool _dartVmTest =
-    bool.fromEnvironment('dart.vm.product') == false && _inTest;
-
-/// Platform.environment is not available in a web build; the test bundle
-/// marks itself with a define instead, and every other build passes false.
-const bool _inTest = bool.fromEnvironment('V2RVPN_TEST');
-
 class Shell extends StatefulWidget {
   const Shell({super.key, required this.core, required this.settings});
 
